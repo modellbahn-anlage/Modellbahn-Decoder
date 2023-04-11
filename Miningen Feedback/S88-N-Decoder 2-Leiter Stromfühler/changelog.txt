@@ -1,0 +1,4 @@
+1.0 - erste Ausrollversion
+1.1 - Fehler behoben: Die Anschlüsse der Gleichrichter saßen nicht optimal
+1.2 - überflüssige Bauteile aus Version 1.0 entfernt (alle unnötigen C)
+    - Logo optimal gesetzt

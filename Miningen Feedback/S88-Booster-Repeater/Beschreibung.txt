@@ -1,0 +1,20 @@
+Hallo,
+wie schon in meinem Thread über S88 IR-Gleisbesetzmelder Module (https://stummiforum.de/viewtopic.php?f=5&t=157920) angesprochen, habe ich noch eine kleine Schaltung als "S88-Repeater" entworfen. Das ganze ist keine "rocket-science" und vielleicht sind schon andere vor mir auf diese einfache Idee gekommen. Aber ich möchte sie Euch trotzdem kurz vorstellen. Vielleicht hilft es ja jemandem, seinen Bus sicherer und länger zu machen.
+
+Hintergrund und Schaltungsbeschreibung:
+Mit zunehmender Länge des Busses werden die Flanken des Bussignals immer schlechter und irgendwann können die Module am Ende des Busses diese nicht mehr richtig interpretieren. Das ist genau einer der Gründe, weshalb der Bus immer als unzuverlässig gebrandmarkt wird. Mit der kleinen Schaltung werden die Flanken wieder steiler und dadurch wird auch am Ende des Busses eine bessere Signalqualität erreicht. Ich habe dazu einfach ein Latch zweckentfremdet. Die Eingänge des Latches sind auf die jeweiligen Signalquellen gelegt (also die Eingänge für Clock, Reset und PS Richtung Zentrale und für DATA Richtung Peripherie). Die Ausgänge sind dann entsprechend angeschlossen. Der "Data Enable Input" des Latches ist fest mit Masse verbunden, so dass jedes Eingangssignal sofort wieder ausgegeben wird. Da der Latch einen Arbeitsbereich von 2 - 6 V hat, ist die Schaltung perfekt für eine Busspannung von 5V geeignet. Für S88-Bussysteme, die mit 12V betrieben werden, ist diese Schaltung nicht geeignet!
+
+Das Teil ist sehr einfach aufgebaut und hat insgesamt nur 4 Komponenten:
+- 2 RJ45-Buchsen zum Anschluss an den S88-Bus [z.B. MEBP 8-8]
+- 100nF Kondensator [z.B. KERKO 100N]
+- IC: 74HC125N, am besten mit Sockel [z.B. 74HC125 + GS 14]
+
+Es ist leicht zu Löten, da keine SMD Bauteile benutzt werden. Ich empfehle den IC nicht direkt einzulöten sondern einen IC-Sockel zu benutzen. In Klammern stehen die Artikelnummern vom Elektronikversender reich***. Dort kosten die Bauteile zusammen weniger als 1,50€. Wer will kann das alles einfach "fliegend" verdrahten. Das funktioniert auch wunderbar, ist aber irgendwie unpraktisch. Daher habe ich daraus eine kleine Platine gemacht. Dann sieht es so aus:
+
+Auf dieser sind noch zwei Anschlüsse für Strom enthalten, die man eigentlich nicht unbedingt braucht. Der Zweck ist, dass man:
+- die Spannung im Bus leicht messen kann und
+- einem Spannungsabfall am Busende vorbeugen kann.
+
+Der Spannungsabfall - zum Busende hin - ist im Übergangswiderstand jeder RJ45 Kupplung und dem Leitungswiderstand des Kabels begründet. Dieser beträgt bei normaler Kabellänge ca. 0,1-0,2 Ohm pro Modul. Wenn man dann 10 Module hintereinander geschaltet hat, führt das zu einem Gesamtwiderstand von ca. 3 Ohm (10 Module x 2 Phasen [+ und -] x 0,15 Ohm). Bei einer Stromaufnahme des gesamten Busses von angenommen 200mAh sind das nach Adam Riese schon 0,6V Spannungsverlust und man hat am letzten Modul statt 5V nur noch 4,4V, was für manche Module eben nicht mehr für einen zuverlässigen Betrieb ausreicht. So kann man dann einfach ein weiteres Kabel ziehen, am Busanfang die Spannung abgreifen und in der Mitte (oder/und auch am Ende) des S88-Strangs eben nochmal einspeisen. Durch das zweite Kabel (also ohne weiteres Netzteil oder dergleichen) umgeht man die vielen Übergangswiderstände und erhöht somit die Spannung am entfernten Ende des Busses.
+
+Wer Interesse an einer Platine aus meiner Nullserie hat, einfach kurz melden. Die Ätzvorlage - zum selbst ätzen - findet ihr als Anhang.
