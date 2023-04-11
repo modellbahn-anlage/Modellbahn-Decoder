@@ -1,0 +1,13 @@
+* Bauteilliste aus Datei: "F-Decoder klein.lay6" / 24-4-2022 11:10:58
+*
+* No	Name	Value	Package	Comment
+*
+1	B1	DF04	---	1A  DF04  SMD
+2	C1	4,7u	1206	1210
+3	C2	100n	0805	0805
+4	D5	1N4148	SOD80	0805
+5	IC1	7805	---	SOT 23
+6	IC2	12F629	---	SOP8
+7	IC4	ULN2003	---	SOP16
+8	R1	22K	---	0805
+9	R2	10K	0805	0805
