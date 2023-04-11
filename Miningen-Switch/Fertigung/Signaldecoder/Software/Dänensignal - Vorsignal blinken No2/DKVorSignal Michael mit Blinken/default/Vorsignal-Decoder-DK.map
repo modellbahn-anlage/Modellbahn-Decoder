@@ -1,0 +1,407 @@
+Archive member included because of file (symbol)
+
+c:/winavr/bin/../lib/gcc/avr/4.1.1\libgcc.a(_copy_data.o)
+                              Vorsignal-Decoder-DK.o (__do_copy_data)
+c:/winavr/bin/../lib/gcc/avr/4.1.1\libgcc.a(_clear_bss.o)
+                              Vorsignal-Decoder-DK.o (__do_clear_bss)
+c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib\libc.a(ee_rb.1C1D1E.o)
+                              Vorsignal-Decoder-DK.o (__eeprom_read_byte_1C1D1E)
+c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib\libc.a(ee_wb.1C1D1E.o)
+                              Vorsignal-Decoder-DK.o (__eeprom_write_byte_1C1D1E)
+
+Allocating common symbols
+Common symbol       size              file
+
+MyOpMode            0x1               Vorsignal-Decoder-DK.o
+hauptsignal_state   0x1               Vorsignal-Decoder-DK.o
+vorsignal_state     0x1               Vorsignal-Decoder-DK.o
+ReceivedCommand     0x1               Vorsignal-Decoder-DK.o
+message             0x6               Vorsignal-Decoder-DK.o
+MyDelay             0x1               Vorsignal-Decoder-DK.o
+out_pwm             0x40              Vorsignal-Decoder-DK.o
+ReceivedAdr         0x2               Vorsignal-Decoder-DK.o
+message_size        0x1               Vorsignal-Decoder-DK.o
+cur_dimm            0x1               Vorsignal-Decoder-DK.o
+dccrec              0x4               Vorsignal-Decoder-DK.o
+
+Discarded input sections
+
+ .stabstr       0x00000000        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/crttn2313.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/crttn2313.o
+LOAD Vorsignal-Decoder-DK.o
+LOAD c:/winavr/bin/../lib/gcc/avr/4.1.1\libgcc.a
+LOAD c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib\libc.a
+LOAD c:/winavr/bin/../lib/gcc/avr/4.1.1\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0x5de
+ *(.vectors)
+ .vectors       0x00000000       0x26 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/crttn2313.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ .progmem.gcc_sw_table
+                0x00000026       0x10 Vorsignal-Decoder-DK.o
+ *(.progmem*)
+ .progmem.data  0x00000036       0x23 Vorsignal-Decoder-DK.o
+                0x00000040                copy
+                0x00000036                speed
+                0x0000005a                . = ALIGN (0x2)
+ *fill*         0x00000059        0x1 00
+                0x0000005a                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x0000005a        0x0 linker stubs
+ *(.trampolines*)
+                0x0000005a                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x0000005a                __ctors_start = .
+ *(.ctors)
+                0x0000005a                __ctors_end = .
+                0x0000005a                __dtors_start = .
+ *(.dtors)
+                0x0000005a                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x0000005a        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/crttn2313.o
+                0x0000005a                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x0000005a        0x8 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/crttn2313.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000062       0x18 c:/winavr/bin/../lib/gcc/avr/4.1.1\libgcc.a(_copy_data.o)
+                0x00000062                __do_copy_data
+ .init4         0x0000007a       0x10 c:/winavr/bin/../lib/gcc/avr/4.1.1\libgcc.a(_clear_bss.o)
+                0x0000007a                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x0000008a        0x2 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/crttn2313.o
+ *(.init9)
+ *(.text)
+ .text          0x0000008c        0x2 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/crttn2313.o
+                0x0000008c                __vector_12
+                0x0000008c                __bad_interrupt
+                0x0000008c                __vector_6
+                0x0000008c                __vector_3
+                0x0000008c                __vector_11
+                0x0000008c                __vector_17
+                0x0000008c                __vector_7
+                0x0000008c                __vector_5
+                0x0000008c                __vector_9
+                0x0000008c                __vector_2
+                0x0000008c                __vector_15
+                0x0000008c                __vector_8
+                0x0000008c                __vector_14
+                0x0000008c                __vector_10
+                0x0000008c                __vector_16
+                0x0000008c                __vector_18
+ .text          0x0000008e      0x528 Vorsignal-Decoder-DK.o
+                0x000000be                __vector_1
+                0x0000008e                init_main
+                0x00000190                __vector_13
+                0x00000240                set_new_light_val
+                0x00000512                main
+                0x000000c8                __vector_4
+                0x000002fa                action
+                0x0000028c                dimmer
+                0x000003c2                analyze_message
+                0x00000476                DoProgramming
+ .text          0x000005b6        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1\libgcc.a(_copy_data.o)
+ .text          0x000005b6        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1\libgcc.a(_clear_bss.o)
+ .text          0x000005b6        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib\libc.a(ee_rb.1C1D1E.o)
+ .text          0x000005b6        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib\libc.a(ee_wb.1C1D1E.o)
+                0x000005b6                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x000005b6        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1\libgcc.a(_copy_data.o)
+ .text.libgcc   0x000005b6        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1\libgcc.a(_clear_bss.o)
+ .text.eeprom   0x000005b6       0x10 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib\libc.a(ee_rb.1C1D1E.o)
+                0x000005b6                __eeprom_read_byte_1C1D1E
+ .text.eeprom   0x000005c6       0x18 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib\libc.a(ee_wb.1C1D1E.o)
+                0x000005c6                __eeprom_write_byte_1C1D1E
+                0x000005de                . = ALIGN (0x2)
+ *(.fini9)
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ *(.fini0)
+                0x000005de                _etext = .
+
+.data           0x00800060        0x0 load address 0x000005de
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/crttn2313.o
+ .data          0x00800060        0x0 Vorsignal-Decoder-DK.o
+ .data          0x00800060        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1\libgcc.a(_copy_data.o)
+ .data          0x00800060        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1\libgcc.a(_clear_bss.o)
+ .data          0x00800060        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib\libc.a(ee_rb.1C1D1E.o)
+ .data          0x00800060        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib\libc.a(ee_wb.1C1D1E.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800060                . = ALIGN (0x2)
+                0x00800060                _edata = .
+                0x00800060                PROVIDE (__data_end, .)
+
+.bss            0x00800060       0x53
+                0x00800060                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800060        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/crttn2313.o
+ .bss           0x00800060        0x0 Vorsignal-Decoder-DK.o
+ .bss           0x00800060        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1\libgcc.a(_copy_data.o)
+ .bss           0x00800060        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1\libgcc.a(_clear_bss.o)
+ .bss           0x00800060        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib\libc.a(ee_rb.1C1D1E.o)
+ .bss           0x00800060        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib\libc.a(ee_wb.1C1D1E.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00800060       0x53 Vorsignal-Decoder-DK.o
+                0x00800060                MyOpMode
+                0x00800061                hauptsignal_state
+                0x00800062                vorsignal_state
+                0x00800063                ReceivedCommand
+                0x00800064                message
+                0x0080006a                MyDelay
+                0x0080006b                out_pwm
+                0x008000ab                ReceivedAdr
+                0x008000ad                message_size
+                0x008000ae                cur_dimm
+                0x008000af                dccrec
+                0x008000b3                PROVIDE (__bss_end, .)
+                0x000005de                __data_load_start = LOADADDR (.data)
+                0x000005de                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008000b3        0x0
+                0x008000b3                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008000b3                PROVIDE (__noinit_end, .)
+                0x008000b3                _end = .
+                0x008000b3                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000       0x75
+ *(.eeprom*)
+ .eeprom        0x00810000       0x75 Vorsignal-Decoder-DK.o
+                0x00810065                EE_Signal_bin_Valid
+                0x00810004                EE_LastState
+                0x00810015                EE_Signal_DB3_Pattern
+                0x0081002d                EE_Signal_DB4_Valid
+                0x0081001d                EE_Signal_DB3_Valid
+                0x0081000d                EE_Signal_DB2_Valid
+                0x00810025                EE_Signal_DB4_Pattern
+                0x00810055                EE_Signal_bin_Pattern
+                0x00810005                EE_Signal_DB2_Pattern
+                0x00810001                EE_myAdrL
+                0x00810000                EE_empty
+                0x00810035                EE_Signal_comb_Pattern
+                0x00810003                EE_myOpMode
+                0x00810045                EE_Signal_comb_Valid
+                0x00810002                EE_myAdrH
+                0x00810075                __eeprom_end = .
+
+.stab           0x00000000      0x354
+ *(.stab)
+ .stab          0x00000000      0x354 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/crttn2313.o
+
+.stabstr        0x00000000       0x84
+ *(.stabstr)
+ .stabstr       0x00000000       0x84 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/crttn2313.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x20
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 Vorsignal-Decoder-DK.o
+
+.debug_pubnames
+                0x00000000      0x2aa
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000      0x2aa Vorsignal-Decoder-DK.o
+
+.debug_info     0x00000000      0x7d6
+ *(.debug_info)
+ .debug_info    0x00000000      0x7d6 Vorsignal-Decoder-DK.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x1d5
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x1d5 Vorsignal-Decoder-DK.o
+
+.debug_line     0x00000000      0x870
+ *(.debug_line)
+ .debug_line    0x00000000      0x870 Vorsignal-Decoder-DK.o
+
+.debug_frame    0x00000000       0xb0
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xb0 Vorsignal-Decoder-DK.o
+
+.debug_str      0x00000000      0x3b6
+ *(.debug_str)
+ .debug_str     0x00000000      0x3b6 Vorsignal-Decoder-DK.o
+                                0x437 (size before relaxing)
+
+.debug_loc      0x00000000      0x306
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x306 Vorsignal-Decoder-DK.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(Vorsignal-Decoder-DK.elf elf32-avr)
+LOAD linker stubs

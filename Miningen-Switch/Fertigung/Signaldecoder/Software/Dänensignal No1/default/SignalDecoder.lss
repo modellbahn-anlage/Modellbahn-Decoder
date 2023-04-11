@@ -1,0 +1,2748 @@
+
+SignalDecoder.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000007fa  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000053  00800060  00800060  0000088e  2**0
+                  ALLOC
+  2 .eeprom       00000075  00810000  00810000  0000088e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  3 .stab         00000354  00000000  00000000  00000904  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000084  00000000  00000000  00000c58  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 00000020  00000000  00000000  00000cdc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_pubnames 000002aa  00000000  00000000  00000cfc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00000e55  00000000  00000000  00000fa6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 000001eb  00000000  00000000  00001dfb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00000c1d  00000000  00000000  00001fe6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  000000b0  00000000  00000000  00002c03  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    000003ca  00000000  00000000  00002cb3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    000004d6  00000000  00000000  0000307d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	24 c0       	rjmp	.+72     	; 0x4a <__ctors_end>
+   2:	55 c0       	rjmp	.+170    	; 0xae <__vector_1>
+   4:	3b c0       	rjmp	.+118    	; 0x7c <__bad_interrupt>
+   6:	3a c0       	rjmp	.+116    	; 0x7c <__bad_interrupt>
+   8:	57 c0       	rjmp	.+174    	; 0xb8 <__vector_4>
+   a:	38 c0       	rjmp	.+112    	; 0x7c <__bad_interrupt>
+   c:	37 c0       	rjmp	.+110    	; 0x7c <__bad_interrupt>
+   e:	36 c0       	rjmp	.+108    	; 0x7c <__bad_interrupt>
+  10:	35 c0       	rjmp	.+106    	; 0x7c <__bad_interrupt>
+  12:	34 c0       	rjmp	.+104    	; 0x7c <__bad_interrupt>
+  14:	33 c0       	rjmp	.+102    	; 0x7c <__bad_interrupt>
+  16:	32 c0       	rjmp	.+100    	; 0x7c <__bad_interrupt>
+  18:	31 c0       	rjmp	.+98     	; 0x7c <__bad_interrupt>
+  1a:	b2 c0       	rjmp	.+356    	; 0x180 <__vector_13>
+  1c:	2f c0       	rjmp	.+94     	; 0x7c <__bad_interrupt>
+  1e:	2e c0       	rjmp	.+92     	; 0x7c <__bad_interrupt>
+  20:	2d c0       	rjmp	.+90     	; 0x7c <__bad_interrupt>
+  22:	2c c0       	rjmp	.+88     	; 0x7c <__bad_interrupt>
+  24:	2b c0       	rjmp	.+86     	; 0x7c <__bad_interrupt>
+
+00000026 <speed>:
+  26:	2e 2e 31 30 4d 48 7a 2e 2e 00                       ..10MHz...
+
+00000030 <copy>:
+  30:	2e 2e 53 69 67 6e 61 6c 44 65 63 6f 64 65 72 20     ..SignalDecoder 
+  40:	56 30 2e 31 32 20 2e 2e 00 00                       V0.12 ....
+
+0000004a <__ctors_end>:
+  4a:	11 24       	eor	r1, r1
+  4c:	1f be       	out	0x3f, r1	; 63
+  4e:	cf ed       	ldi	r28, 0xDF	; 223
+  50:	cd bf       	out	0x3d, r28	; 61
+
+00000052 <__do_copy_data>:
+  52:	10 e0       	ldi	r17, 0x00	; 0
+  54:	a0 e6       	ldi	r26, 0x60	; 96
+  56:	b0 e0       	ldi	r27, 0x00	; 0
+  58:	ea ef       	ldi	r30, 0xFA	; 250
+  5a:	f7 e0       	ldi	r31, 0x07	; 7
+  5c:	03 c0       	rjmp	.+6      	; 0x64 <.do_copy_data_start>
+
+0000005e <.do_copy_data_loop>:
+  5e:	c8 95       	lpm
+  60:	31 96       	adiw	r30, 0x01	; 1
+  62:	0d 92       	st	X+, r0
+
+00000064 <.do_copy_data_start>:
+  64:	a0 36       	cpi	r26, 0x60	; 96
+  66:	b1 07       	cpc	r27, r17
+  68:	d1 f7       	brne	.-12     	; 0x5e <.do_copy_data_loop>
+
+0000006a <__do_clear_bss>:
+  6a:	10 e0       	ldi	r17, 0x00	; 0
+  6c:	a0 e6       	ldi	r26, 0x60	; 96
+  6e:	b0 e0       	ldi	r27, 0x00	; 0
+  70:	01 c0       	rjmp	.+2      	; 0x74 <.do_clear_bss_start>
+
+00000072 <.do_clear_bss_loop>:
+  72:	1d 92       	st	X+, r1
+
+00000074 <.do_clear_bss_start>:
+  74:	a3 3b       	cpi	r26, 0xB3	; 179
+  76:	b1 07       	cpc	r27, r17
+  78:	e1 f7       	brne	.-8      	; 0x72 <.do_clear_bss_loop>
+  7a:	59 c3       	rjmp	.+1714   	; 0x72e <main>
+
+0000007c <__bad_interrupt>:
+  7c:	c1 cf       	rjmp	.-126    	; 0x0 <__vectors>
+
+0000007e <init_main>:
+
+
+
+void init_main(void)
+  {
+  7e:	8f ef       	ldi	r24, 0xFF	; 255
+  80:	87 bb       	out	0x17, r24	; 23
+    DDRB  = 0xFF;               // PortB: All Bits as Output
+    DDRD  = 0xFF                // PortD: all output but:
+  82:	8a ee       	ldi	r24, 0xEA	; 234
+  84:	81 bb       	out	0x11, r24	; 17
+          & ~(1<<PROGTASTER)    // in - set to 0
+          & ~(1<<DCCIN)  
+          & ~(1<<JUMPER);
+    PORTD =  (1<<PROGTASTER)    // pullup - set to 1
+  86:	85 e1       	ldi	r24, 0x15	; 21
+  88:	82 bb       	out	0x12, r24	; 18
+          |  (1<<DCCIN) 
+          |  (1<<JUMPER);
+
+    // Init Timer1
+
+    TCCR1B = (0 << ICNC1) 
+  8a:	88 e0       	ldi	r24, 0x08	; 8
+  8c:	8e bd       	out	0x2e, r24	; 46
+           | (0 << ICES1) 
+           | (0 << WGM13) 
+           | (1 << WGM12)       // Mode 4: CTC with OCRA1
+           | (0 << CS12)        // clk stopped
+           | (0 << CS11) 
+           | (0 << CS10);
+
+    // set Timer1 Compare to 3/4 of period of a one -> this is 116*0,75=87us
+    
+    OCR1A = F_CPU * PERIOD_1 * 3 / 4 / 1000000L;  
+  8e:	86 e6       	ldi	r24, 0x66	; 102
+  90:	93 e0       	ldi	r25, 0x03	; 3
+  92:	9b bd       	out	0x2b, r25	; 43
+  94:	8a bd       	out	0x2a, r24	; 42
+
+
+
+    // Init Timer0 as CTC 
+    // check PWM_TICK_PERIOD and F_CPU
+    #define TIMER0_CLKDIV 64              // possible values: 1, 8, 64, 256, 1024
+
+    #if (F_CPU / 1000000L * PWM_TICK_PERIOD / TIMER0_CLKDIV) > 255L
+      #warning: overflow in OCR0A - check TICK_PERIOD and F_CPU
+      #warning: suggestion: use a larger clkdiv
+    #endif    
+    #if (F_CPU / 1000000L * PWM_TICK_PERIOD / TIMER0_CLKDIV) < 30L
+      #warning: resolution accuracy in OCR0A too low - check TICK_PERIOD and F_CPU
+      #warning: suggestion: use a smaller clkdiv
+    #endif    
+
+
+    OCR0A = F_CPU / 1000000L * PWM_TICK_PERIOD / TIMER0_CLKDIV ;  
+  96:	8e e2       	ldi	r24, 0x2E	; 46
+  98:	86 bf       	out	0x36, r24	; 54
+    TCCR0A = (0 << COM0A1)      // compare match A
+  9a:	82 e0       	ldi	r24, 0x02	; 2
+  9c:	80 bf       	out	0x30, r24	; 48
+           | (0 << COM0A0) 
+           | (0 << COM0B1)      // compare match B
+           | (0 << COM0B0) 
+           | 0                  // reserved
+           | 0                  // reserved
+           | (1 << WGM01)  
+           | (0 << WGM00);      // Timer0 Mode 2 = CTC - Int on compare A
+    TCCR0B = (0 << FOC0A) 
+  9e:	93 e0       	ldi	r25, 0x03	; 3
+  a0:	93 bf       	out	0x33, r25	; 51
+           | (0 << FOC0B) 
+           | (0 << WGM02) 
+    #if   TIMER0_CLKDIV == 1
+           | (0 << CS02) | (0 << CS01)  | (1 << CS00);       // CS[2:0]=001 clkdiv 1
+    #elif TIMER0_CLKDIV == 8
+           | (0 << CS02) | (1 << CS01)  | (0 << CS00);       // CS[2:0]=010 clkdiv 8
+    #elif TIMER0_CLKDIV == 64
+           | (0 << CS02) | (1 << CS01)  | (1 << CS00);       // CS[2:0]=011 clkdiv 64 
+    #elif TIMER0_CLKDIV == 256
+           | (1 << CS02) | (0 << CS01)  | (0 << CS00);       // CS[2:0]=100 clkdiv 256
+    #elif TIMER0_CLKDIV == 1024
+           | (1 << CS02) | (0 << CS01)  | (1 << CS00);       // CS[2:0]=101 clkdiv 1024   
+    #else
+     #warning: TIMER0_CLKDIV is void
+    #endif
+
+
+    TIMSK = (0<<TOIE1)       // Timer1 Overflow
+  a2:	81 e4       	ldi	r24, 0x41	; 65
+  a4:	89 bf       	out	0x39, r24	; 57
+          | (1<<OCIE1A)      // Timer1 Compare A
+          | (0<<OCIE1B)      // Timer1 Compare B
+          | 0                // reserved
+          | (0<<ICIE1)       // Timer1 Input Capture
+          | (0<<OCIE0B)      // Timer0 Compare B
+          | (0<<TOIE0)       // Timer0 Overflow
+          | (1<<OCIE0A);     // Timer0 Compare A
+
+
+    // Init Interrupt 0
+
+    GIMSK = (0<<INT1)        // Int1 is msb
+  a6:	80 e4       	ldi	r24, 0x40	; 64
+  a8:	8b bf       	out	0x3b, r24	; 59
+          | (1<<INT0)        // Enable INT0
+          | (0<<PCIE); 
+
+
+    MCUCR = 0x03;  //           ;The rising edge of INT0 generates an interrupt request.
+  aa:	95 bf       	out	0x35, r25	; 53
+  ac:	08 95       	ret
+
+000000ae <__vector_1>:
+          
+  }
+
+
+
+
+
+
+//==============================================================================
+//
+// Section 2
+//
+// DCC Receive Routine
+//
+// Howto:    uses two interrupt: a rising edge in DCC polarity triggers INT0;
+//           in INT0, Timer1 with a delay of 87us is started.
+//           On Timer1 Compare Match the level of DCC is evaluated and
+//           parsed.
+//
+//                           |<-----116us----->|
+//
+//           DCC 1: _________XXXXXXXXX_________XXXXXXXXX_________
+//                           ^-INT0
+//                           |----87us--->|
+//                                        ^-INT1: reads zero
+//
+//           DCC 0: _________XXXXXXXXXXXXXXXXXX__________________
+//                           ^-INT0
+//                           |----------->|
+//                                        ^-INT1: reads one
+//           
+// Result:   1. The received message is stored in "message" and "message_size"
+//           2. The flag C_Received is set.
+//
+#define MAX_MESSAGE 6    // including XOR-Byte
+volatile unsigned char message[MAX_MESSAGE];
+volatile unsigned char message_size;
+
+struct
+    {
+        unsigned char state;                    // current state
+        unsigned char bitcount;                 // current bit
+        unsigned char bytecount;                // current byte
+        unsigned char accubyte;                 // actual check
+    } dccrec;
+
+// some states:
+#define RECSTAT_WF_PREAMBLE  0
+#define RECSTAT_WF_LEAD0     1
+#define RECSTAT_WF_BYTE      2
+#define RECSTAT_WF_TRAILER   3
+
+#define RECSTAT_DCC          7   
+
+
+// ISR(INT0) loads only a register and stores this register to IO.
+// this influences no status flags in SREG.
+// therefore we define a naked version of the ISR with
+// no compiler overhead.
+
+#define ISR_INT0_OPTIMIZED
+
+#ifdef ISR_INT0_OPTIMIZED
+    #define ISR_MY_NAKED(vector) \
+        void vector (void) __attribute__ ((signal, naked)); \
+        void vector (void)
+
+    ISR_MY_NAKED(INT0_vect) 
+      {
+  ae:	0f 93       	push	r16
+  b0:	09 e0       	ldi	r16, 0x09	; 9
+  b2:	0e bd       	out	0x2e, r16	; 46
+  b4:	0f 91       	pop	r16
+         __asm__ __volatile 
+          (
+            "push r16"  "\n\t"
+            "ldi r16, %1"  "\n\t"
+            "out %0, r16" "\n\t"
+            "pop r16"  "\n\t"
+         :                         // no output section
+         : "M" (_SFR_IO_ADDR (TCCR1B)),
+           "M" ((0 << ICNC1)       // start timer1
+              | (0 << ICES1) 
+              | (0 << WGM13) 
+              | (1 << WGM12)       // Mode 4: CTC
+              | (0 << CS12)        // clk 1:1
+              | (0 << CS11) 
+              | (1 << CS10))
+          );
+        asm volatile ( "reti" ); 
+  b6:	18 95       	reti
+
+000000b8 <__vector_4>:
+      }
+#else
+    ISR(INT0_vect) 
+      {
+        TCCR1B = (0 << ICNC1)       // start timer1
+               | (0 << ICES1) 
+               | (0 << WGM13) 
+               | (1 << WGM12)       // Mode 4: CTC
+               | (0 << CS12)        // clk 1:1
+               | (0 << CS11) 
+               | (1 << CS10); 
+      }
+
+#endif
+
+unsigned char copy[] PROGMEM = {"..SignalDecoder V0.12 .."};
+
+ISR(TIMER1_COMPA_vect)
+  {
+  b8:	1f 92       	push	r1
+  ba:	0f 92       	push	r0
+  bc:	0f b6       	in	r0, 0x3f	; 63
+  be:	0f 92       	push	r0
+  c0:	11 24       	eor	r1, r1
+  c2:	2f 93       	push	r18
+  c4:	8f 93       	push	r24
+  c6:	9f 93       	push	r25
+  c8:	ef 93       	push	r30
+  ca:	ff 93       	push	r31
+    #define mydcc (Recstate & (1<<RECSTAT_DCC))
+
+    // read asap to keep timing!
+    if (PIND & (1<<DCCIN)) Recstate &= ~(1<<RECSTAT_DCC);  // if high -> mydcc=0
+  cc:	82 9b       	sbis	0x10, 2	; 16
+  ce:	02 c0       	rjmp	.+4      	; 0xd4 <__vector_4+0x1c>
+  d0:	a7 98       	cbi	0x14, 7	; 20
+  d2:	01 c0       	rjmp	.+2      	; 0xd6 <__vector_4+0x1e>
+    else                   Recstate |= 1<<RECSTAT_DCC;    
+  d4:	a7 9a       	sbi	0x14, 7	; 20
+
+    //sei(); !!!
+
+    TCCR1B = (0 << ICNC1)       
+  d6:	88 e0       	ldi	r24, 0x08	; 8
+  d8:	8e bd       	out	0x2e, r24	; 46
+           | (0 << ICES1) 
+           | (0 << WGM13) 
+           | (1 << WGM12) 
+           | (0 << CS12)        // clk stopped
+           | (0 << CS11) 
+           | (0 << CS10);
+
+    TCNT1 = 0;                  // clear Counter
+  da:	1d bc       	out	0x2d, r1	; 45
+  dc:	1c bc       	out	0x2c, r1	; 44
+
+    dccrec.bitcount++;
+  de:	20 91 b0 00 	lds	r18, 0x00B0
+  e2:	2f 5f       	subi	r18, 0xFF	; 255
+  e4:	20 93 b0 00 	sts	0x00B0, r18
+
+    if (Recstate & (1<<RECSTAT_WF_PREAMBLE))            // wait for preamble
+  e8:	a0 9b       	sbis	0x14, 0	; 20
+  ea:	09 c0       	rjmp	.+18     	; 0xfe <__stack+0x1f>
+      {                                       
+        if (mydcc)
+  ec:	a7 9b       	sbis	0x14, 7	; 20
+  ee:	04 c0       	rjmp	.+8      	; 0xf8 <__stack+0x19>
+          {
+            if (dccrec.bitcount >= 10) 
+  f0:	2a 30       	cpi	r18, 0x0A	; 10
+  f2:	e0 f1       	brcs	.+120    	; 0x16c <__stack+0x8d>
+              {
+                Recstate = 1<<RECSTAT_WF_LEAD0;            
+  f4:	82 e0       	ldi	r24, 0x02	; 2
+  f6:	39 c0       	rjmp	.+114    	; 0x16a <__stack+0x8b>
+              }
+          }
+        else
+          {
+            dccrec.bitcount=0;
+  f8:	10 92 b0 00 	sts	0x00B0, r1
+  fc:	37 c0       	rjmp	.+110    	; 0x16c <__stack+0x8d>
+          }
+      }
+    else if (Recstate & (1<<RECSTAT_WF_LEAD0))          // wait for leading 0
+  fe:	a1 9b       	sbis	0x14, 1	; 20
+ 100:	05 c0       	rjmp	.+10     	; 0x10c <__stack+0x2d>
+      {
+        if (mydcc)
+ 102:	a7 99       	sbic	0x14, 7	; 20
+ 104:	33 c0       	rjmp	.+102    	; 0x16c <__stack+0x8d>
+          {                                             // still 1, wait again
+          }
+        else
+          {
+            dccrec.bytecount=0;
+ 106:	10 92 b1 00 	sts	0x00B1, r1
+ 10a:	27 c0       	rjmp	.+78     	; 0x15a <__stack+0x7b>
+            Recstate = 1<<RECSTAT_WF_BYTE;
+            dccrec.bitcount=0;
+            dccrec.accubyte=0;
+          }
+      }
+    else if (Recstate & (1<<RECSTAT_WF_BYTE))           // wait for byte
+ 10c:	a2 9b       	sbis	0x14, 2	; 20
+ 10e:	17 c0       	rjmp	.+46     	; 0x13e <__stack+0x5f>
+      {
+        unsigned char my_accubyte;
+        my_accubyte = dccrec.accubyte << 1;
+ 110:	90 91 b2 00 	lds	r25, 0x00B2
+ 114:	99 0f       	add	r25, r25
+        if (mydcc)
+ 116:	a7 99       	sbic	0x14, 7	; 20
+          {
+            my_accubyte |= 1;
+ 118:	91 60       	ori	r25, 0x01	; 1
+          }
+        dccrec.accubyte = my_accubyte;
+ 11a:	90 93 b2 00 	sts	0x00B2, r25
+        
+        /* dccrec.accubyte = dccrec.accubyte << 1;
+        if (mydcc)
+          {
+            dccrec.accubyte |= 1;
+          }
+         */
+        if (dccrec.bitcount==8)
+ 11e:	28 30       	cpi	r18, 0x08	; 8
+ 120:	29 f5       	brne	.+74     	; 0x16c <__stack+0x8d>
+          {
+            if (dccrec.bytecount == MAX_MESSAGE)        // too many bytes
+ 122:	80 91 b1 00 	lds	r24, 0x00B1
+ 126:	86 30       	cpi	r24, 0x06	; 6
+ 128:	f9 f0       	breq	.+62     	; 0x168 <__stack+0x89>
+              {                                         // ignore message
+                Recstate = 1<<RECSTAT_WF_PREAMBLE;   
+              }
+            else
+              {
+                message[dccrec.bytecount++] = dccrec.accubyte;
+ 12a:	e8 2f       	mov	r30, r24
+ 12c:	ff 27       	eor	r31, r31
+ 12e:	ec 59       	subi	r30, 0x9C	; 156
+ 130:	ff 4f       	sbci	r31, 0xFF	; 255
+ 132:	90 83       	st	Z, r25
+ 134:	8f 5f       	subi	r24, 0xFF	; 255
+ 136:	80 93 b1 00 	sts	0x00B1, r24
+                Recstate = 1<<RECSTAT_WF_TRAILER; 
+ 13a:	24 bb       	out	0x14, r18	; 20
+ 13c:	17 c0       	rjmp	.+46     	; 0x16c <__stack+0x8d>
+              }
+          }
+      }
+    else if (Recstate & (1<<RECSTAT_WF_TRAILER))        // wait for 0 (next byte) 
+ 13e:	a3 9b       	sbis	0x14, 3	; 20
+ 140:	13 c0       	rjmp	.+38     	; 0x168 <__stack+0x89>
+      {                                                 // or 1 (eof message)
+        if (mydcc)
+ 142:	a7 9b       	sbis	0x14, 7	; 20
+ 144:	0a c0       	rjmp	.+20     	; 0x15a <__stack+0x7b>
+          {  // trailing "1" received
+            Recstate = 1<<RECSTAT_WF_PREAMBLE;
+ 146:	81 e0       	ldi	r24, 0x01	; 1
+ 148:	84 bb       	out	0x14, r24	; 20
+            dccrec.bitcount=1;
+ 14a:	80 93 b0 00 	sts	0x00B0, r24
+            message_size = dccrec.bytecount;
+ 14e:	80 91 b1 00 	lds	r24, 0x00B1
+ 152:	80 93 ad 00 	sts	0x00AD, r24
+            Communicate |= (1<<C_Received);
+ 156:	98 9a       	sbi	0x13, 0	; 19
+ 158:	09 c0       	rjmp	.+18     	; 0x16c <__stack+0x8d>
+          }
+        else
+          {
+            Recstate = 1<<RECSTAT_WF_BYTE;
+ 15a:	84 e0       	ldi	r24, 0x04	; 4
+ 15c:	84 bb       	out	0x14, r24	; 20
+            dccrec.bitcount=0;
+ 15e:	10 92 b0 00 	sts	0x00B0, r1
+            dccrec.accubyte=0;
+ 162:	10 92 b2 00 	sts	0x00B2, r1
+ 166:	02 c0       	rjmp	.+4      	; 0x16c <__stack+0x8d>
+          }
+      }
+    else
+      {
+        Recstate = 1<<RECSTAT_WF_PREAMBLE;
+ 168:	81 e0       	ldi	r24, 0x01	; 1
+ 16a:	84 bb       	out	0x14, r24	; 20
+ 16c:	ff 91       	pop	r31
+ 16e:	ef 91       	pop	r30
+ 170:	9f 91       	pop	r25
+ 172:	8f 91       	pop	r24
+ 174:	2f 91       	pop	r18
+ 176:	0f 90       	pop	r0
+ 178:	0f be       	out	0x3f, r0	; 63
+ 17a:	0f 90       	pop	r0
+ 17c:	1f 90       	pop	r1
+ 17e:	18 95       	reti
+
+00000180 <__vector_13>:
+      }
+  }
+
+#if (SIMULATION == 1)
+
+unsigned char dccbit;
+void simulat_receive(void);
+
+void dcc_receive(void)
+  {
+    #define mydcc dccbit
+
+    dccrec.bitcount++;
+
+    if (Recstate & (1<<RECSTAT_WF_PREAMBLE))            // wait for preamble
+      {                                       
+        if (mydcc)
+          {
+            if (dccrec.bitcount >= 10) 
+              {
+                Recstate = 1<<RECSTAT_WF_LEAD0;            
+              }
+          }
+        else
+          {
+            dccrec.bitcount=0;
+          }
+      }
+    else if (Recstate & (1<<RECSTAT_WF_LEAD0))          // wait for leading 0
+      {
+        if (mydcc)
+          {                                             // still 1, wait again
+          }
+        else
+          {
+            dccrec.bytecount=0;
+            Recstate = 1<<RECSTAT_WF_BYTE;
+            dccrec.bitcount=0;
+            dccrec.accubyte=0;
+          }
+      }
+    else if (Recstate & (1<<RECSTAT_WF_BYTE))           // wait for byte
+      {
+        dccrec.accubyte = dccrec.accubyte << 1;
+        if (mydcc)
+          {
+            dccrec.accubyte |= 1;
+          }
+        if (dccrec.bitcount==8)
+          {
+            if (dccrec.bytecount == MAX_MESSAGE)        // too many bytes
+              {                                         // ignore message
+                Recstate = 1<<RECSTAT_WF_PREAMBLE;   
+              }
+            else
+              {
+                message[dccrec.bytecount++] = dccrec.accubyte;
+                Recstate = 1<<RECSTAT_WF_TRAILER; 
+              }
+          }
+      }
+    else if (Recstate & (1<<RECSTAT_WF_TRAILER))        // wait for 0 (next byte) 
+      {                                                 // or 1 (eof message)
+        if (mydcc)
+          {  // trailing "1" received
+            Recstate = 1<<RECSTAT_WF_PREAMBLE;
+            dccrec.bitcount=1;
+            message_size = dccrec.bytecount;
+            Communicate |= (1<<C_Received);
+          }
+        else
+          {
+            Recstate = 1<<RECSTAT_WF_BYTE;
+            dccrec.bitcount=0;
+            dccrec.accubyte=0;
+          }
+      }
+    else
+      {
+        Recstate = 1<<RECSTAT_WF_PREAMBLE;
+      }
+  }
+
+#endif //  (SIMULATION == 1)
+
+
+#define DIMM_ENGINE
+#ifdef DIMM_ENGINE
+
+//==============================================================================
+//
+// Section 3
+//
+// Lichtsteuerung als PWM-Dimmer
+//
+//             |                        |                          |
+// Output:     |XXXXXXXXXX______________|XXXXXXXXXX________________|
+//             |<-------->              |<------------------------>|
+//             | dimm_val               |        PWM_PERIOD        |
+//         ----|------------------------|--------------------------|---> Time
+//
+//
+// 1. Einstellen des aktuellen Helligkeitswertes (do_dimm)
+//
+//    Es gibt 60 Helligkeitstufen.
+//    Alle 300us erfolgt ein Interrupt, dieser schaltet den Dimmer um eine
+//    Stufe weiter, nach 60 Stufen wird wieder von vorne begonnen.
+//    Stufe MIN:  alle Ports mit einem dimm_val > DIMM_MIN werden eingeschaltet.
+//    Stufe x:    Ein Port, dessen dimm_val kleiner x ist, wird abgeschaltet.
+//    Stufe MAX:  Restart und Meldung an den DIMMER (C_Dimmstep)
+//
+//    Folge: Alle Ports mit einem dimm_val kleiner DIMM_RANGE_MIN sind
+//    dauerhaft aus, alle Ports mit einem dimm_val größer DIMM_RANGE_MAX
+//    sind dauerhaft ein.
+//
+//    Da der PWM 60 Stufen hat und alle 300us ein Int erfolgt, wird dieser
+//    Durchlauf alle 18ms durchgeführt. Dies entspricht einer Refreshrate von
+//    55Hz.
+//
+//
+// 2. Langsame Veränderung der Helligkeit
+//
+//    Nach einem Zyklus des PWM wird vom Hauptprogramm der neue aktuelle
+//    dimm_val ausgerechnet. Hierzu wird vom aktuellen Wert mit einem
+//    Schritt "delta" nach oben oder unten gerechnet, bis der neue Zielwert
+//    erreicht ist.
+//
+//    Die Zykluszeit der PWM ist 18ms, somit wird je nach "delta" folgende
+//    Dimmzeit erreicht:
+//
+//      delta    |    Dimmzeit
+//    -----------------------------
+//        1      |    1080ms
+//        2      |     540ms
+//        3      |     360ms
+//        4      |     270ms
+//        5      |     216ms
+//        6      |     180ms
+//      100      |    sofort
+//
+//    Der neue Zielwert wird in light_val hinterlegt. 
+//
+//    Wenn man von einem Wert kleiner DIMM_RANGE_MIN startet, dann wird
+//    der Port erst mit Verzögerung aufgedimmt, weil zuerst der Bereich
+//    bis DIMM_RANGE_MIN "aufgedimmt" wird.
+//    Dies wird dazu benutzt, zuerst das alte Signalbild wegzudimmen 
+//    und dann das neue Signalbild aufzudimmen.
+//
+// 3. Signalbilder
+// 
+//    Signalbilder werden als Bitfeld hinterlegt. Für jedes Kommando
+//    gibt es ein Bitfeld, in dem das neue Signalbild abgelegt ist und eine
+//    Gültigkeitsmaske, diese bestimmt, auf welche Dimmwerte das Signalbild
+//    wirken soll. Mit diesen beiden Pattern wird "set_new_light_val" 
+//    aufgerufen.
+//
+// 4. Blinken
+//    
+//    Falls ontime bzw. offtime ungleich 0 sind, wird nach Ablauf der
+//    jeweils andere Phasenwert geladen.
+//
+
+#define DIMM_RANGE_MIN 100    // aktiver Bereich 100-160
+#define DIMM_RANGE_MAX (DIMM_RANGE_MIN+PWM_STEPS+1)
+
+
+
+//------------------------------------------- Array for DIMM-Engine
+// a) running values
+unsigned char cur_dimm;            //  = DIMM_RANGE_MIN;
+
+
+// b) target values
+volatile struct
+  {
+    unsigned char rest;     	// Zeit bis zum nächsten Wechsel in PWM_PERIOD (18ms)
+    unsigned char ontime;   	// Einschaltzeit
+    unsigned char offtime;      // Ausschaltzeit
+    unsigned char dimm_val;     // aktueller Istwert
+    unsigned char light_A_val;  // aktueller Zielwert in Richtung A
+    unsigned char delta_A;      // aktuelles Increment in Richtung A
+    unsigned char light_B_val;  // aktueller Zielwert in Richtung B
+    unsigned char delta_B;
+  } out_pwm[8];
+
+//
+// void do_dimm(void)
+ISR(TIMER0_COMPA_vect)                      // Timer0 Compare Int
+  {                                         // macht pwm
+ 180:	1f 92       	push	r1
+ 182:	0f 92       	push	r0
+ 184:	0f b6       	in	r0, 0x3f	; 63
+ 186:	0f 92       	push	r0
+ 188:	11 24       	eor	r1, r1
+ 18a:	2f 93       	push	r18
+ 18c:	3f 93       	push	r19
+ 18e:	4f 93       	push	r20
+ 190:	5f 93       	push	r21
+ 192:	8f 93       	push	r24
+ 194:	9f 93       	push	r25
+ 196:	ef 93       	push	r30
+ 198:	ff 93       	push	r31
+    unsigned char port;
+    unsigned char mask;
+
+    sei();
+ 19a:	78 94       	sei
+    mask = 1;
+    cur_dimm++;
+ 19c:	20 91 ae 00 	lds	r18, 0x00AE
+ 1a0:	2f 5f       	subi	r18, 0xFF	; 255
+ 1a2:	20 93 ae 00 	sts	0x00AE, r18
+    if (cur_dimm == DIMM_RANGE_MAX)
+ 1a6:	21 3a       	cpi	r18, 0xA1	; 161
+ 1a8:	09 f5       	brne	.+66     	; 0x1ec <__vector_13+0x6c>
+      {
+        cur_dimm = DIMM_RANGE_MIN;
+ 1aa:	84 e6       	ldi	r24, 0x64	; 100
+ 1ac:	80 93 ae 00 	sts	0x00AE, r24
+ 1b0:	91 e0       	ldi	r25, 0x01	; 1
+ 1b2:	20 e0       	ldi	r18, 0x00	; 0
+ 1b4:	30 e0       	ldi	r19, 0x00	; 0
+ 1b6:	ee e6       	ldi	r30, 0x6E	; 110
+ 1b8:	f0 e0       	ldi	r31, 0x00	; 0
+        for (port=0; port<8; port++)
+          {
+            if (out_pwm[port].dimm_val > DIMM_RANGE_MIN) PORTB |= mask;   // Einschalten wenn !0
+ 1ba:	80 81       	ld	r24, Z
+ 1bc:	85 36       	cpi	r24, 0x65	; 101
+ 1be:	18 f0       	brcs	.+6      	; 0x1c6 <__vector_13+0x46>
+ 1c0:	88 b3       	in	r24, 0x18	; 24
+ 1c2:	89 2b       	or	r24, r25
+ 1c4:	88 bb       	out	0x18, r24	; 24
+ 1c6:	2f 5f       	subi	r18, 0xFF	; 255
+ 1c8:	3f 4f       	sbci	r19, 0xFF	; 255
+ 1ca:	38 96       	adiw	r30, 0x08	; 8
+ 1cc:	28 30       	cpi	r18, 0x08	; 8
+ 1ce:	31 05       	cpc	r19, r1
+ 1d0:	11 f0       	breq	.+4      	; 0x1d6 <__vector_13+0x56>
+            mask = mask << 1; 
+ 1d2:	99 0f       	add	r25, r25
+ 1d4:	f2 cf       	rjmp	.-28     	; 0x1ba <__vector_13+0x3a>
+          }
+        Communicate |= (1<<C_Dimmstep);
+ 1d6:	9a 9a       	sbi	0x13, 2	; 19
+        if (MyDelay) MyDelay--; 
+ 1d8:	80 91 6a 00 	lds	r24, 0x006A
+ 1dc:	88 23       	and	r24, r24
+ 1de:	d9 f0       	breq	.+54     	; 0x216 <__vector_13+0x96>
+ 1e0:	80 91 6a 00 	lds	r24, 0x006A
+ 1e4:	81 50       	subi	r24, 0x01	; 1
+ 1e6:	80 93 6a 00 	sts	0x006A, r24
+ 1ea:	15 c0       	rjmp	.+42     	; 0x216 <__vector_13+0x96>
+ 1ec:	31 e0       	ldi	r19, 0x01	; 1
+ 1ee:	40 e0       	ldi	r20, 0x00	; 0
+ 1f0:	50 e0       	ldi	r21, 0x00	; 0
+ 1f2:	ee e6       	ldi	r30, 0x6E	; 110
+ 1f4:	f0 e0       	ldi	r31, 0x00	; 0
+      }
+    else
+      {
+        for (port=0; port<8; port++)
+          {
+            if (cur_dimm >= out_pwm[port].dimm_val) PORTB &= ~mask; 
+ 1f6:	80 81       	ld	r24, Z
+ 1f8:	28 17       	cp	r18, r24
+ 1fa:	28 f0       	brcs	.+10     	; 0x206 <__vector_13+0x86>
+ 1fc:	88 b3       	in	r24, 0x18	; 24
+ 1fe:	93 2f       	mov	r25, r19
+ 200:	90 95       	com	r25
+ 202:	89 23       	and	r24, r25
+ 204:	88 bb       	out	0x18, r24	; 24
+ 206:	4f 5f       	subi	r20, 0xFF	; 255
+ 208:	5f 4f       	sbci	r21, 0xFF	; 255
+ 20a:	38 96       	adiw	r30, 0x08	; 8
+ 20c:	48 30       	cpi	r20, 0x08	; 8
+ 20e:	51 05       	cpc	r21, r1
+ 210:	11 f0       	breq	.+4      	; 0x216 <__vector_13+0x96>
+            mask = mask << 1;
+ 212:	33 0f       	add	r19, r19
+ 214:	f0 cf       	rjmp	.-32     	; 0x1f6 <__vector_13+0x76>
+ 216:	ff 91       	pop	r31
+ 218:	ef 91       	pop	r30
+ 21a:	9f 91       	pop	r25
+ 21c:	8f 91       	pop	r24
+ 21e:	5f 91       	pop	r21
+ 220:	4f 91       	pop	r20
+ 222:	3f 91       	pop	r19
+ 224:	2f 91       	pop	r18
+ 226:	0f 90       	pop	r0
+ 228:	0f be       	out	0x3f, r0	; 63
+ 22a:	0f 90       	pop	r0
+ 22c:	1f 90       	pop	r1
+ 22e:	18 95       	reti
+
+00000230 <set_new_light_val>:
+          }
+      }
+  }
+
+
+// Diese Funktion setzt die neuen Ziel-Bits für DIMM
+// beim Aufdimmen gibt es immer 400ms Verzögerung, damit ein Abdimmen vorher fertig wird.
+
+
+void set_new_light_val(unsigned char pattern, unsigned char valid)
+  {
+ 230:	31 e0       	ldi	r19, 0x01	; 1
+ 232:	40 e0       	ldi	r20, 0x00	; 0
+ 234:	50 e0       	ldi	r21, 0x00	; 0
+ 236:	78 2f       	mov	r23, r24
+ 238:	76 23       	and	r23, r22
+ 23a:	a6 e1       	ldi	r26, 0x16	; 22
+ 23c:	28 2f       	mov	r18, r24
+ 23e:	20 95       	com	r18
+ 240:	26 23       	and	r18, r22
+ 242:	eb e6       	ldi	r30, 0x6B	; 107
+ 244:	f0 e0       	ldi	r31, 0x00	; 0
+    unsigned char port;
+    unsigned char mask;
+    unsigned char inv_pattern = ~pattern;
+
+    mask = 1;
+    for (port=0; port<8; port++)
+      {
+        if (pattern & mask & valid)
+ 246:	83 2f       	mov	r24, r19
+ 248:	87 23       	and	r24, r23
+ 24a:	31 f0       	breq	.+12     	; 0x258 <set_new_light_val+0x28>
+          {
+            // turn on
+            #if DIMM_DOWN_SAME_BULB == 1
+                out_pwm[port].rest = DIMM_UP_DELAY / PWM_PERIOD;   
+ 24c:	a0 83       	st	Z, r26
+                CurrentTarget &= ~mask;
+ 24e:	85 b3       	in	r24, 0x15	; 21
+ 250:	93 2f       	mov	r25, r19
+ 252:	90 95       	com	r25
+ 254:	89 23       	and	r24, r25
+ 256:	85 bb       	out	0x15, r24	; 21
+            #else
+                if (CurrentTarget & mask)
+                  {
+                    // already on, nothing to do, keep burning 
+                  }
+                else
+                  {
+                    out_pwm[port].rest = DIMM_UP_DELAY / PWM_PERIOD;   
+                    CurrentTarget &= ~mask;
+                  }
+            #endif
+          }
+        if (inv_pattern & mask & valid)
+ 258:	83 2f       	mov	r24, r19
+ 25a:	82 23       	and	r24, r18
+ 25c:	31 f0       	breq	.+12     	; 0x26a <set_new_light_val+0x3a>
+          {
+            // turn off
+            out_pwm[port].rest    = 0;
+ 25e:	10 82       	st	Z, r1
+            CurrentTarget &= ~mask;
+ 260:	85 b3       	in	r24, 0x15	; 21
+ 262:	93 2f       	mov	r25, r19
+ 264:	90 95       	com	r25
+ 266:	89 23       	and	r24, r25
+ 268:	85 bb       	out	0x15, r24	; 21
+ 26a:	4f 5f       	subi	r20, 0xFF	; 255
+ 26c:	5f 4f       	sbci	r21, 0xFF	; 255
+ 26e:	38 96       	adiw	r30, 0x08	; 8
+ 270:	48 30       	cpi	r20, 0x08	; 8
+ 272:	51 05       	cpc	r21, r1
+ 274:	11 f0       	breq	.+4      	; 0x27a <set_new_light_val+0x4a>
+          }
+        mask = mask << 1;
+ 276:	33 0f       	add	r19, r19
+ 278:	e6 cf       	rjmp	.-52     	; 0x246 <set_new_light_val+0x16>
+ 27a:	08 95       	ret
+
+0000027c <dimmer>:
+      }
+  }
+
+
+
+
+//---------------------------------------------------------------------------------
+// dimmer()
+// this routine is called from main(), if C_Dimmstep is activated  
+//
+
+// Timing Engine
+//
+// Howto:    
+// 1. Generelles Timing:
+//    Diese Routine wird alle PWM_PERIOD aufgerufen. Es wird folgendes
+//    geprüft:
+//    a) Wenn out_pwm[port].rest gleich 0: dann bleibt dieser Port unverändert.
+//    b) out_pwm[port].rest wird decrementiert, wenn es dabei 0 wird, dann
+//       wird ein Dimmvorgang in die andere Richtung eingeleitet.
+//
+// 2. Dimm-Übergänge:
+//    Je nach aktueller Richtung des Dimmvorgang (CurrentTarget) wird der aktuelle
+//    Dimmwert erhöht oder erniedrigt (z.Z. linear).
+//    Die Dimmrampe ist unabhängig von den Zeiten, die bei ontime bzw. offtime
+//    vorgegeben werden.
+//    Wenn ein Ausgang schalten soll, dann muß sein Delta sehr groß gewählt
+//    werden!
+  
+
+
+void dimmer(void)
+  {
+ 27c:	31 e0       	ldi	r19, 0x01	; 1
+ 27e:	40 e0       	ldi	r20, 0x00	; 0
+ 280:	50 e0       	ldi	r21, 0x00	; 0
+ 282:	eb e6       	ldi	r30, 0x6B	; 107
+ 284:	f0 e0       	ldi	r31, 0x00	; 0
+    unsigned char port;
+    unsigned char mask;
+    unsigned char my_rest;
+
+    mask = 1;
+    for (port=0; port<8; port++)
+      {
+        my_rest = out_pwm[port].rest;       // use a local variable to force
+ 286:	80 81       	ld	r24, Z
+        if (my_rest !=0)                    // compiler to tiny code
+ 288:	88 23       	and	r24, r24
+ 28a:	89 f0       	breq	.+34     	; 0x2ae <dimmer+0x32>
+          { 
+            if (--my_rest == 0)
+ 28c:	28 2f       	mov	r18, r24
+ 28e:	21 50       	subi	r18, 0x01	; 1
+ 290:	69 f4       	brne	.+26     	; 0x2ac <dimmer+0x30>
+              {
+                 if (CurrentTarget & mask)
+ 292:	85 b3       	in	r24, 0x15	; 21
+ 294:	83 23       	and	r24, r19
+ 296:	31 f0       	breq	.+12     	; 0x2a4 <dimmer+0x28>
+                  { // bit was on
+                    my_rest = out_pwm[port].offtime;
+ 298:	22 81       	ldd	r18, Z+2	; 0x02
+                    CurrentTarget &= ~mask;
+ 29a:	85 b3       	in	r24, 0x15	; 21
+ 29c:	93 2f       	mov	r25, r19
+ 29e:	90 95       	com	r25
+ 2a0:	89 23       	and	r24, r25
+ 2a2:	03 c0       	rjmp	.+6      	; 0x2aa <dimmer+0x2e>
+                  }
+                else
+                  {
+                    my_rest = out_pwm[port].ontime;
+ 2a4:	21 81       	ldd	r18, Z+1	; 0x01
+                    CurrentTarget |= mask;
+ 2a6:	85 b3       	in	r24, 0x15	; 21
+ 2a8:	83 2b       	or	r24, r19
+ 2aa:	85 bb       	out	0x15, r24	; 21
+                  }
+              }
+            out_pwm[port].rest = my_rest;
+ 2ac:	20 83       	st	Z, r18
+          }
+
+
+    	my_rest = out_pwm[port].dimm_val;
+ 2ae:	93 81       	ldd	r25, Z+3	; 0x03
+        if (CurrentTarget & mask)    
+ 2b0:	85 b3       	in	r24, 0x15	; 21
+ 2b2:	83 23       	and	r24, r19
+ 2b4:	31 f0       	breq	.+12     	; 0x2c2 <dimmer+0x46>
+          {                                     // we are in phase A -> incr
+            if (my_rest < out_pwm[port].light_A_val)  
+ 2b6:	84 81       	ldd	r24, Z+4	; 0x04
+ 2b8:	98 17       	cp	r25, r24
+ 2ba:	68 f4       	brcc	.+26     	; 0x2d6 <dimmer+0x5a>
+              {
+                // fehlt Sicherung gegen Überlauf -> bei Daten aufpassen
+                // delta darf nicht zu groß sein
+				my_rest += out_pwm[port].delta_A;
+ 2bc:	85 81       	ldd	r24, Z+5	; 0x05
+ 2be:	98 0f       	add	r25, r24
+ 2c0:	0a c0       	rjmp	.+20     	; 0x2d6 <dimmer+0x5a>
+              }
+          }
+        else
+          {                                     // we are in phase B -> decr
+            if (my_rest > out_pwm[port].light_B_val)
+ 2c2:	86 81       	ldd	r24, Z+6	; 0x06
+ 2c4:	89 17       	cp	r24, r25
+ 2c6:	38 f4       	brcc	.+14     	; 0x2d6 <dimmer+0x5a>
+              {
+                if (my_rest > out_pwm[port].delta_B)
+ 2c8:	87 81       	ldd	r24, Z+7	; 0x07
+ 2ca:	89 17       	cp	r24, r25
+ 2cc:	10 f0       	brcs	.+4      	; 0x2d2 <dimmer+0x56>
+ 2ce:	90 e0       	ldi	r25, 0x00	; 0
+ 2d0:	02 c0       	rjmp	.+4      	; 0x2d6 <dimmer+0x5a>
+					 my_rest -= out_pwm[port].delta_B;
+ 2d2:	87 81       	ldd	r24, Z+7	; 0x07
+ 2d4:	98 1b       	sub	r25, r24
+                else my_rest = 0;
+              }
+          }
+        out_pwm[port].dimm_val = my_rest;
+ 2d6:	93 83       	std	Z+3, r25	; 0x03
+ 2d8:	4f 5f       	subi	r20, 0xFF	; 255
+ 2da:	5f 4f       	sbci	r21, 0xFF	; 255
+ 2dc:	38 96       	adiw	r30, 0x08	; 8
+ 2de:	48 30       	cpi	r20, 0x08	; 8
+ 2e0:	51 05       	cpc	r21, r1
+ 2e2:	11 f0       	breq	.+4      	; 0x2e8 <dimmer+0x6c>
+        mask = mask << 1;                  // do *not* calc mask from port
+ 2e4:	33 0f       	add	r19, r19
+ 2e6:	cf cf       	rjmp	.-98     	; 0x286 <dimmer+0xa>
+ 2e8:	08 95       	ret
+
+000002ea <action>:
+      }
+  }
+
+
+#endif // DIMM_ENGINE
+//==============================================================================
+//
+
+//==============================================================================
+//
+// Section 4
+//
+// Pattern for different signals
+//
+// a) Vierfach rot grün
+//
+// Anschluß:
+//
+//  0baabbccdd     Anschluß:
+//    |  ||  |---- Hauptsignal rot
+//    |  || |----- Hauptsignal grün
+
+unsigned char EE_Signal_DB2_Pattern[8] EEMEM =
+  {
+    0b00000001,          // hp0
+    0b00000010,          // hp1
+    0b00000100,
+    0b00001000,
+    0b00010000,
+    0b00100000,
+    0b01000000,
+    0b10000000,
+  };
+
+unsigned char EE_Signal_DB2_Valid[8] EEMEM =
+  {
+    0b00000011,
+    0b00000011,
+    0b00001100,
+    0b00001100,
+    0b00110000,
+    0b00110000,
+    0b11000000,
+    0b11000000,
+  };
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dänemark SIGNAL VIERBEGRIFFIG by MF
+//
+/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+//
+// Anschluss am Decoder von links nach rechts
+//      grün unten, rot, grün oben, gelb
+//
+//
+//
+//
+
+unsigned char EE_Signal_DB3_Pattern[8] EEMEM =
+ {
+   0b00000101,     // 1/5 - gelb/rot
+   0b00001001,     // 2/6 - gelb grün
+   0b00001000,     // 3/7 - grün unten
+   0b00001010,     // 4/8 - grün/grün
+   0b01010000,     // 1/5 - gelb/rot
+   0b10010000,     // 2/6 - gelb grün
+   0b10000000,     // 3/7 - grün unten
+   0b10100000,     // 4/8 - gelb/rot
+ };
+
+unsigned char EE_Signal_DB3_Valid[8] EEMEM =
+  {
+    0b00001111,
+    0b00001111,
+    0b00001111,
+    0b00001111,
+    0b11110000,
+    0b11110000,
+    0b11110000,
+    0b11110000,
+  };
+
+
+//
+// Hauptsignal und Vorsignal am gleichen Mast (mit Dunkeltastung)
+//
+// Anschluß:
+//    0bvvvhhhhh
+//      | ||   |---- HS rot 1
+//      | ||  |----- HS rot 2
+//      | || |------ HS gelb
+//      | |||------- HS grün
+//      | ||-------- HS weiß
+//      | |--------- VS vr0 (Dioden erforderlich, siehe Opendecoder)
+//      ||---------- VS vr1
+//      |----------- VS vr2
+
+unsigned char EE_Signal_DB4_Pattern[8] EEMEM =
+  {
+    0b00000011,     // hp0
+    0b00001000,     // hp1
+    0b00001100,     // hp2
+    0b00010001,     // sh1
+    0b00100000,     // vr0
+    0b01000000,     // vr1
+    0b10000000,     // vr2
+    0b00000000,     // Dunkeltastung
+  };
+
+unsigned char EE_Signal_DB4_Valid[8] EEMEM =
+  {
+    0b00011111,
+    0b00011111,
+    0b00011111,
+    0b00011111,
+    0b11100000,
+    0b11100000,
+    0b11100000,
+	0b11100000,
+  };
+
+
+
+// Alex Shepherd - 4 aspects binary coded (red, green, both on, none)
+// Mode 6:
+
+unsigned char EE_Signal_comb_Pattern[16] EEMEM =
+  {
+    0b00000001,    // only red    
+    0b00000010,    // only green 
+    0b00000011,    // red and green
+    0b00000000,    // dark 
+    0b00000100,     
+    0b00001000,     
+    0b00001100,     
+    0b00000000,  
+    0b00010000,    // only red    
+    0b00100000,    // only green 
+    0b00110000,    // red and green
+    0b00000000,    // dark 
+    0b01000000,     
+    0b10000000,     
+    0b11000000,     
+    0b00000000,     
+  };
+
+unsigned char EE_Signal_comb_Valid[16] EEMEM =
+  {
+    0b00000011,
+    0b00000011,
+    0b00000011,
+    0b00000011,
+    0b00001100,
+    0b00001100,
+    0b00001100,
+    0b00001100,
+    0b00110000,
+    0b00110000,
+    0b00110000,
+    0b00110000,
+    0b11000000,
+    0b11000000,
+    0b11000000,
+    0b11000000,
+  };
+
+
+unsigned char EE_Signal_bin_Pattern[16] EEMEM =
+  {
+    0b00000001,    // only red    
+    0b00000000,    // red off
+    0b00000010,    // green
+    0b00000000,    // off
+    0b00000100,     
+    0b00000000,     
+    0b00001000,     
+    0b00000000,  
+    0b00010000,    // red on   
+    0b00000000,    // off
+    0b00100000,    // green on
+    0b00000000,    // off
+    0b01000000,     
+    0b00000000,     
+    0b10000000,     
+    0b00000000,     
+  };
+
+unsigned char EE_Signal_bin_Valid[16] EEMEM =
+  {
+    0b00000001,
+    0b00000001,
+    0b00000010,
+    0b00000010,
+    0b00000100,
+    0b00000100,
+    0b00001000,
+    0b00001000,
+    0b00010000,
+    0b00010000,
+    0b00100000,
+    0b00100000,
+    0b01000000,
+    0b01000000,
+    0b10000000,
+    0b10000000,
+  };
+
+
+//==============================================================================
+//
+// Section 5
+//
+// MAIN: analyze command, call the action, do programming
+//
+
+//------------------------------------------------------------------------------
+// This Routine is called when myAdr is received
+
+#if (BELGIAN_SIGNALS == 1)
+#warning BELGIAN_SIGNAL enabled, different decoding!
+
+
+void action(void)
+  {
+    // signalling according to belgain signals
+    // there are 4 lights and 7 aspects. So we can two signals, using 16 addresses
+    // map
+    // > > addr +0, r: single red                 1. Signal
+    // > > addr +0, g: single green
+    // > > addr +1, r: yellow yellow
+    // > > addr +1, g: green yellow
+    // > > addr +2, r: single red flashing
+    // > > addr +2, g: green flashing
+    // > > addr +3, r: yellow yellow flashing
+    // > > addr +3, g: -
+    // > > addr +4, r: single red                 2. Signal
+    // > > addr +4, g: single green
+    // > > addr +5, r: yellow yellow
+    // > > addr +5, g: green yellow
+    // > > addr +6, r: single red flashing
+    // > > addr +6, g: green flashing
+    // > > addr +7, r: yellow yellow flashing
+    // > > addr +7, g: -
+
+    // connect as follows:
+    // Port 0  4: green
+    // Port 1  5: red
+    // Port 2  6: yellow (in row)
+    // Port 3  7: yellow (aside)
+
+    #define BELG_FLASH  ( 900000L / PWM_PERIOD)   // Period
+    
+    unsigned char myCommand;
+    unsigned char i;
+    
+    myCommand = ReceivedCommand & 0b00001111;
+
+    cli();                      // block interrupts
+    
+    Communicate |= (1<<C_DoSave); 
+
+    if (myCommand < 8)                                      // clear any pending flashing
+      {
+        for (i=0;i<4;i++)
+              {
+                out_pwm[i].offtime = 0;  
+                out_pwm[i].ontime = 0;  
+              }       
+      }
+    else
+      {
+        for (i=4;i<8;i++)
+              {
+                out_pwm[i].offtime = 0;  
+                out_pwm[i].ontime = 0;  
+              }       
+      }
+
+    
+    switch(myCommand)
+      {
+        case 0:                                             // single red 
+            set_new_light_val(0b00000010, 0b00001111); 
+            break;
+        case 1:                                             // single green
+            set_new_light_val(0b00000001, 0b00001111); 
+            break;
+        case 2:                                             // yellow yellow
+            set_new_light_val(0b00001100, 0b00001111); 
+            break;
+        case 3:                                             // green yellow
+            set_new_light_val(0b00001001, 0b00001111); 
+            break;
+        case 4:                                             // single red flashing
+            out_pwm[1].offtime = BELG_FLASH/2;  
+            out_pwm[1].ontime = BELG_FLASH/2;  
+            set_new_light_val(0b00000010, 0b00001111); 
+            break;
+        case 5:                                             // single green flashing
+            out_pwm[0].offtime = BELG_FLASH/2;  
+            out_pwm[0].ontime = BELG_FLASH/2;  
+            set_new_light_val(0b00000001, 0b00001111); 
+            break;
+        case 6:                                             // yellow yellow flashing
+            out_pwm[2].offtime = BELG_FLASH/2;  
+            out_pwm[2].ontime = BELG_FLASH/2;  
+            out_pwm[3].offtime = BELG_FLASH/2;  
+            out_pwm[3].ontime = BELG_FLASH/2;  
+            set_new_light_val(0b00001100, 0b00001111); 
+            break;
+        case 7:                                             // all off
+            set_new_light_val(0b00000000, 0b00001111);
+            break; 
+
+        case 8:                                             // single red 
+            set_new_light_val(0b00100010, 0b11110000); 
+            break;
+        case 9:                                             // single green
+            set_new_light_val(0b00010001, 0b11110000); 
+            break;
+        case 10:                                             // yellow yellow
+            set_new_light_val(0b11001100, 0b11110000); 
+            break;
+        case 11:                                             // green yellow
+            set_new_light_val(0b10011001, 0b11110000); 
+            break;
+        case 12:                                             // single red flashing
+            out_pwm[5].offtime = BELG_FLASH/2;  
+            out_pwm[5].ontime = BELG_FLASH/2;  
+            set_new_light_val(0b00100010, 0b11110000); 
+            break;
+        case 13:                                             // single green flashing
+            out_pwm[4].offtime = BELG_FLASH/2;  
+            out_pwm[4].ontime = BELG_FLASH/2;  
+            set_new_light_val(0b00010001, 0b11110000); 
+            break;
+        case 14:                                             // yellow yellow flashing
+            out_pwm[6].offtime = BELG_FLASH/2;  
+            out_pwm[6].ontime = BELG_FLASH/2;  
+            out_pwm[7].offtime = BELG_FLASH/2;  
+            out_pwm[7].ontime = BELG_FLASH/2;  
+            set_new_light_val(0b11001100, 0b11110000); 
+            break;
+        case 15:                                             // all off
+            set_new_light_val(0b00000000, 0b11110000);
+            break; 
+      }
+    sei();
+  }
+
+#elif (DUTCH_SIGNALS == 1)   // Belgian_signal
+#warning DUTCH_SIGNAL enabled, different decoding!
+
+// contributed by Cees Baarda (c.baarda@hccnet.nl)
+void action(void)
+  {
+    // signalling according to Dutch signals
+    // there are 4 lights and 8 aspects. So we can do two signals, using 16 addresses
+    // map
+    // > > addr +0, r: single red                 1. Signal
+    // > > addr +0, g: single green
+    // > > addr +1, r: yellow and digit
+    // > > addr +1, g: yellow
+    // > > addr +2, r: green flashing and digit
+    // > > addr +2, g: green flashing
+    // > > addr +3, r: yellow and digit flashing
+    // > > addr +3, g: yellow flashing
+    // > > addr +4, r: single red                 2. Signal
+    // > > addr +4, g: single green
+    // > > addr +5, r: yellow and digit
+    // > > addr +5, g: yellow
+    // > > addr +6, r: green flashing and digit
+    // > > addr +6, g: green flashing
+    // > > addr +7, r: yellow and digit flashingg
+    // > > addr +7, g: yellow flashing
+
+    // connect as follows:
+    // Port 0  4: red
+    // Port 1  5: yellow
+    // Port 2  6: green
+    // Port 3  7: digit
+
+    #define DUTCH_FLASH  ( 900000L / PWM_PERIOD)   // Period
+    
+    unsigned char myCommand;
+    unsigned char i;
+    
+    myCommand = ReceivedCommand & 0b00001111;      // limit to 16 aspects
+
+    cli();                      // block interrupts
+    
+    Communicate |= (1<<C_DoSave); 
+
+    if (myCommand < 8)                                      // clear any pending flashing
+      {
+        for (i=0;i<4;i++)
+              {
+                out_pwm[i].offtime = 0;  
+                out_pwm[i].ontime = 0;  
+              }       
+      }
+    else
+      {
+        for (i=4;i<8;i++)
+              {
+                out_pwm[i].offtime = 0;  
+                out_pwm[i].ontime = 0;  
+              }       
+      }
+
+    switch(myCommand)
+      {
+        case 0:                                             // red 
+            set_new_light_val(0b00000001, 0b00001111); 
+            break;
+        case 1:                                             // green
+            set_new_light_val(0b00000100, 0b00001111); 
+            break;
+        case 2:                                             // yellow + digit
+            set_new_light_val(0b00001010, 0b00001111); 
+            break;
+        case 3:                                             // yellow
+            set_new_light_val(0b00000010, 0b00001111); 
+            break;
+        case 4:                                             // green flashing +digit
+            out_pwm[2].offtime = DUTCH_FLASH/2;  
+            out_pwm[2].ontime = DUTCH_FLASH/2;  
+            set_new_light_val(0b00001100, 0b00001111);
+            break;
+        case 5:                                             // green flashing
+            out_pwm[2].offtime = DUTCH_FLASH/2;  
+            out_pwm[2].ontime = DUTCH_FLASH/2;  
+            set_new_light_val(0b00000100, 0b00001111); 
+            break;
+        case 6:                                             // yellow + digit flashing
+            out_pwm[3].offtime = DUTCH_FLASH/2;  
+            out_pwm[3].ontime = DUTCH_FLASH/2;  
+            set_new_light_val(0b00001010, 0b00001111); 
+            break;
+        case 7:                                             // yellow flashing
+            out_pwm[1].offtime = DUTCH_FLASH/2;  
+            out_pwm[1].ontime = DUTCH_FLASH/2;  
+            set_new_light_val(0b00000010, 0b00001111);
+            break; 
+
+        case 8:                                             // red 
+            set_new_light_val(0b00010001, 0b11110000); 
+            break;
+        case 9:                                             // green
+            set_new_light_val(0b01000100, 0b11110000); 
+            break;
+        case 10:                                             // yellow + digit
+            set_new_light_val(0b10101010, 0b11110000); 
+            break;
+        case 11:                                             // yellow
+            set_new_light_val(0b00100010, 0b11110000); 
+            break;
+        case 12:                                             // green flashing +digit
+            out_pwm[6].offtime = DUTCH_FLASH/2;  
+            out_pwm[6].ontime = DUTCH_FLASH/2;  
+            set_new_light_val(0b11001100, 0b11110000);
+            break;
+        case 13:                                             // green flashing
+            out_pwm[6].offtime = DUTCH_FLASH/2;  
+            out_pwm[6].ontime = DUTCH_FLASH/2;  
+            set_new_light_val(0b01000100, 0b11110000); 
+            break;
+        case 14:                                             // yellow + digit flashing
+            out_pwm[7].offtime = DUTCH_FLASH/2;  
+            out_pwm[7].ontime = DUTCH_FLASH/2;  
+            set_new_light_val(0b10101010, 0b11110000); 
+            break;
+        case 15:                                             // yellow flashing
+            out_pwm[5].offtime = DUTCH_FLASH/2;  
+            out_pwm[5].ontime = DUTCH_FLASH/2;  
+            set_new_light_val(0b00100010, 0b11110000);
+            break; 
+	      }
+      sei();
+  }
+
+#else   // DUTCH_SIGNAL
+// now standard mode
+
+void action(void)
+  {
+ 2ea:	1f 93       	push	r17
+    unsigned char myCommand;
+    
+    myCommand = ReceivedCommand & 0b00001111;
+ 2ec:	10 91 63 00 	lds	r17, 0x0063
+ 2f0:	1f 70       	andi	r17, 0x0F	; 15
+
+    cli();                      // block interrupts
+ 2f2:	f8 94       	cli
+    
+    Communicate |= (1<<C_DoSave); 
+ 2f4:	99 9a       	sbi	0x13, 1	; 19
+        
+
+    if (MyOpMode == 7)
+ 2f6:	80 91 60 00 	lds	r24, 0x0060
+ 2fa:	87 30       	cpi	r24, 0x07	; 7
+ 2fc:	09 f0       	breq	.+2      	; 0x300 <action+0x16>
+ 2fe:	7e c0       	rjmp	.+252    	; 0x3fc <action+0x112>
+      {
+        // Traffic Light (Ampel)
+        // Ampel
+        // LED0:RT1 xxxxxxxx_____________________________xxxxxxxxxxxxxxxxx
+        // LED1:GE1 ______xx___________________________xx_________________
+        // LED2:GN1 ________xxxxxxxxxxxxxxxxxxxxxxxxxxx___________________
+        // LED3:STOP1 xxxxxxx___________________________xxxxxxxxxxxxxxxxxx
+
+        #define AMP_YE  (1000000L / PWM_PERIOD)   // Yellow 1 s
+        #define AMP_BL  ( 500000L / PWM_PERIOD)   // Blinken
+         if (myCommand == 0) // = schalte auf rot
+ 300:	11 23       	and	r17, r17
+ 302:	79 f4       	brne	.+30     	; 0x322 <action+0x38>
+ 304:	ab 98       	cbi	0x15, 3	; 21
+ 306:	aa 98       	cbi	0x15, 2	; 21
+ 308:	a9 9a       	sbi	0x15, 1	; 21
+ 30a:	a8 98       	cbi	0x15, 0	; 21
+           {
+
+                  set_target(3,0); // Magnet
+                  set_target(2,0); // gn;
+                  set_target(1,1); // ye;
+                  set_target(0,0); // rd;
+
+                  out_pwm[0].rest    = AMP_YE;
+ 30c:	87 e3       	ldi	r24, 0x37	; 55
+ 30e:	80 93 6b 00 	sts	0x006B, r24
+                  // out_pwm[0].ontime  = 0;
+
+                  out_pwm[1].rest    = AMP_YE;
+ 312:	80 93 73 00 	sts	0x0073, r24
+                  out_pwm[1].offtime = 0;
+ 316:	10 92 75 00 	sts	0x0075, r1
+
+                  out_pwm[2].rest    = 0;
+ 31a:	10 92 7b 00 	sts	0x007B, r1
+
+                  out_pwm[3].rest    = AMP_YE / 2;  // StopMagnet nach halber Gelb ein
+ 31e:	8b e1       	ldi	r24, 0x1B	; 27
+ 320:	10 c0       	rjmp	.+32     	; 0x342 <action+0x58>
+                  // out_pwm[3].ontime = 0;
+                  // Hinweis: braucht großes Delta - wird beim Einstellen des Modes gemacht!
+
+           }
+         else if (myCommand == 1) // = schalte auf grün
+ 322:	11 30       	cpi	r17, 0x01	; 1
+ 324:	89 f4       	brne	.+34     	; 0x348 <action+0x5e>
+ 326:	ab 9a       	sbi	0x15, 3	; 21
+ 328:	aa 98       	cbi	0x15, 2	; 21
+ 32a:	a9 9a       	sbi	0x15, 1	; 21
+           {
+                  set_target(3,1); // Magnet
+                  set_target(2,0); // gn;
+                  set_target(1,1); // ye;
+                  set_target(0,1); // rd;
+
+                  out_pwm[0].rest    = AMP_YE;
+ 32c:	a8 9a       	sbi	0x15, 0	; 21
+ 32e:	87 e3       	ldi	r24, 0x37	; 55
+ 330:	80 93 6b 00 	sts	0x006B, r24
+                  //out_pwm[0].offtime  = 0;
+
+                  out_pwm[1].rest    = AMP_YE;
+ 334:	80 93 73 00 	sts	0x0073, r24
+                  out_pwm[1].offtime = 0;
+ 338:	10 92 75 00 	sts	0x0075, r1
+
+                  out_pwm[2].rest    = AMP_YE;
+ 33c:	80 93 7b 00 	sts	0x007B, r24
+                  //out_pwm[2].ontime = 0;
+
+                  out_pwm[3].rest    = 3*AMP_YE / 2;   // Magnet nach 1,5 gelb aus
+ 340:	82 e5       	ldi	r24, 0x52	; 82
+ 342:	80 93 83 00 	sts	0x0083, r24
+ 346:	48 c1       	rjmp	.+656    	; 0x5d8 <action+0x2ee>
+                  //out_pwm[3].offtime = 0;
+           }
+         else if (myCommand == 2) // = alles aus
+ 348:	12 30       	cpi	r17, 0x02	; 2
+ 34a:	11 f4       	brne	.+4      	; 0x350 <action+0x66>
+           {
+                  set_new_light_val(0x00, 0x0f);
+ 34c:	6f e0       	ldi	r22, 0x0F	; 15
+ 34e:	3f c0       	rjmp	.+126    	; 0x3ce <action+0xe4>
+
+                  /*
+                  CurrentTarget = (0<<3) | (0<<2) | (0<<1) | (0<<0);
+                                      //              Stop     green    gelb   rot
+                  out_pwm[1].rest    = 0;
+                  out_pwm[0].rest    = 0;
+                  out_pwm[2].rest    = 0;
+                  out_pwm[3].rest    = 0;
+                  */
+           }
+         else if (myCommand == 3) // blinken
+ 350:	13 30       	cpi	r17, 0x03	; 3
+ 352:	91 f4       	brne	.+36     	; 0x378 <action+0x8e>
+ 354:	ab 98       	cbi	0x15, 3	; 21
+ 356:	aa 98       	cbi	0x15, 2	; 21
+ 358:	a9 9a       	sbi	0x15, 1	; 21
+ 35a:	a8 98       	cbi	0x15, 0	; 21
+           {
+                  set_target(3,0); // Magnet
+                  set_target(2,0); // gn;
+                  set_target(1,1); // ye;
+                  set_target(0,0); // rd;
+
+                  out_pwm[1].rest    = AMP_YE;
+ 35c:	87 e3       	ldi	r24, 0x37	; 55
+ 35e:	80 93 73 00 	sts	0x0073, r24
+                  out_pwm[1].ontime  = AMP_YE;
+ 362:	80 93 74 00 	sts	0x0074, r24
+                  out_pwm[1].offtime = AMP_YE;
+ 366:	80 93 75 00 	sts	0x0075, r24
+
+                  out_pwm[0].rest    = 0;
+ 36a:	10 92 6b 00 	sts	0x006B, r1
+                  out_pwm[2].rest    = 0;
+ 36e:	10 92 7b 00 	sts	0x007B, r1
+                  out_pwm[3].rest    = 0;
+ 372:	10 92 83 00 	sts	0x0083, r1
+ 376:	30 c1       	rjmp	.+608    	; 0x5d8 <action+0x2ee>
+           }
+         else if (myCommand == 4) // = schalte auf rot
+ 378:	14 30       	cpi	r17, 0x04	; 4
+ 37a:	89 f4       	brne	.+34     	; 0x39e <action+0xb4>
+ 37c:	af 98       	cbi	0x15, 7	; 21
+ 37e:	ae 98       	cbi	0x15, 6	; 21
+ 380:	ad 9a       	sbi	0x15, 5	; 21
+ 382:	ac 98       	cbi	0x15, 4	; 21
+           {
+                  set_target(7,0); // Magnet
+                  set_target(6,0); // gn;
+                  set_target(5,1); // ye;
+                  set_target(4,0); // rd;
+
+                  out_pwm[4].rest    = AMP_YE;
+ 384:	87 e3       	ldi	r24, 0x37	; 55
+ 386:	80 93 8b 00 	sts	0x008B, r24
+                  out_pwm[4].ontime  = 0;
+ 38a:	10 92 8c 00 	sts	0x008C, r1
+
+                  out_pwm[5].rest    = AMP_YE;
+ 38e:	80 93 93 00 	sts	0x0093, r24
+                  out_pwm[5].offtime = 0;
+ 392:	10 92 95 00 	sts	0x0095, r1
+
+                  out_pwm[6].rest    = 0;
+ 396:	10 92 9b 00 	sts	0x009B, r1
+
+                  out_pwm[7].rest    = AMP_YE / 2;
+ 39a:	8b e1       	ldi	r24, 0x1B	; 27
+ 39c:	a6 c0       	rjmp	.+332    	; 0x4ea <action+0x200>
+                  out_pwm[7].ontime = 0;
+           }
+         else if (myCommand == 5) // = schalte auf grün
+ 39e:	15 30       	cpi	r17, 0x05	; 5
+ 3a0:	99 f4       	brne	.+38     	; 0x3c8 <action+0xde>
+ 3a2:	af 9a       	sbi	0x15, 7	; 21
+ 3a4:	ae 98       	cbi	0x15, 6	; 21
+ 3a6:	ad 9a       	sbi	0x15, 5	; 21
+           {
+                  set_target(7,1); // Magnet
+                  set_target(6,0); // gn;
+                  set_target(5,1); // ye;
+                  set_target(4,1); // rd;
+
+                  out_pwm[4].rest    = AMP_YE;
+ 3a8:	ac 9a       	sbi	0x15, 4	; 21
+ 3aa:	87 e3       	ldi	r24, 0x37	; 55
+ 3ac:	80 93 8b 00 	sts	0x008B, r24
+                  out_pwm[4].offtime  = 0;
+ 3b0:	10 92 8d 00 	sts	0x008D, r1
+
+                  out_pwm[5].rest    = AMP_YE;
+ 3b4:	80 93 93 00 	sts	0x0093, r24
+                  out_pwm[5].offtime = 0;
+ 3b8:	10 92 95 00 	sts	0x0095, r1
+
+                  out_pwm[6].rest    = AMP_YE;
+ 3bc:	80 93 9b 00 	sts	0x009B, r24
+                  out_pwm[6].ontime = 0;
+ 3c0:	10 92 9c 00 	sts	0x009C, r1
+
+                  out_pwm[7].rest    = 3*AMP_YE / 2;
+ 3c4:	82 e5       	ldi	r24, 0x52	; 82
+ 3c6:	70 c0       	rjmp	.+224    	; 0x4a8 <action+0x1be>
+                  out_pwm[7].offtime = 0;
+
+           }
+         else if (myCommand == 6) // = alles aus
+ 3c8:	16 30       	cpi	r17, 0x06	; 6
+ 3ca:	19 f4       	brne	.+6      	; 0x3d2 <action+0xe8>
+           {
+                  set_new_light_val(0x00, 0xf0);
+ 3cc:	60 ef       	ldi	r22, 0xF0	; 240
+ 3ce:	80 e0       	ldi	r24, 0x00	; 0
+ 3d0:	02 c1       	rjmp	.+516    	; 0x5d6 <action+0x2ec>
+
+                  /*
+                  CurrentTarget = (0<<7) | (0<<6) | (0<<5) | (0<<4);
+                                      //              Stop     green    gelb   rot
+                  out_pwm[5].rest    = 0;
+                  out_pwm[4].rest    = 0;
+                  out_pwm[6].rest    = 0;
+                  out_pwm[7].rest    = 0;
+                  */
+           }
+         else if (myCommand == 7) // blinken
+ 3d2:	17 30       	cpi	r17, 0x07	; 7
+ 3d4:	09 f0       	breq	.+2      	; 0x3d8 <action+0xee>
+ 3d6:	00 c1       	rjmp	.+512    	; 0x5d8 <action+0x2ee>
+ 3d8:	af 98       	cbi	0x15, 7	; 21
+ 3da:	ae 98       	cbi	0x15, 6	; 21
+ 3dc:	ad 9a       	sbi	0x15, 5	; 21
+ 3de:	ac 98       	cbi	0x15, 4	; 21
+           {
+                  set_target(7,0); // Magnet
+                  set_target(6,0); // gn;
+                  set_target(5,1); // ye;
+                  set_target(4,0); // rd;
+
+                  out_pwm[5].rest    = AMP_YE;
+ 3e0:	87 e3       	ldi	r24, 0x37	; 55
+ 3e2:	80 93 93 00 	sts	0x0093, r24
+                  out_pwm[5].ontime  = AMP_YE;
+ 3e6:	80 93 94 00 	sts	0x0094, r24
+                  out_pwm[5].offtime = AMP_YE;
+ 3ea:	80 93 95 00 	sts	0x0095, r24
+
+                  out_pwm[4].rest    = 0;
+ 3ee:	10 92 8b 00 	sts	0x008B, r1
+                  out_pwm[6].rest    = 0;
+ 3f2:	10 92 9b 00 	sts	0x009B, r1
+                  out_pwm[7].rest    = 0;
+ 3f6:	10 92 a3 00 	sts	0x00A3, r1
+ 3fa:	ee c0       	rjmp	.+476    	; 0x5d8 <action+0x2ee>
+           }
+      }
+    else if (MyOpMode == 6)
+ 3fc:	86 30       	cpi	r24, 0x06	; 6
+ 3fe:	59 f4       	brne	.+22     	; 0x416 <action+0x12c>
+      {                            // new for alex shepherd - uses all 16 commands
+        set_new_light_val(
+ 400:	21 2f       	mov	r18, r17
+ 402:	33 27       	eor	r19, r19
+ 404:	b3 2f       	mov	r27, r19
+ 406:	a2 2f       	mov	r26, r18
+ 408:	ab 5b       	subi	r26, 0xBB	; 187
+ 40a:	bf 4f       	sbci	r27, 0xFF	; 255
+uint8_t 
+eeprom_read_byte (const uint8_t *addr) 
+{
+  uint8_t result;
+  __asm__ __volatile__
+ 40c:	e2 d1       	rcall	.+964    	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 40e:	60 2d       	mov	r22, r0
+ 410:	2b 5c       	subi	r18, 0xCB	; 203
+ 412:	3f 4f       	sbci	r19, 0xFF	; 255
+ 414:	db c0       	rjmp	.+438    	; 0x5cc <action+0x2e2>
+            my_eeprom_read_byte(&EE_Signal_comb_Pattern[myCommand]),
+            my_eeprom_read_byte(&EE_Signal_comb_Valid[myCommand])    );
+      }
+    else if (MyOpMode == 5)
+ 416:	85 30       	cpi	r24, 0x05	; 5
+ 418:	59 f4       	brne	.+22     	; 0x430 <action+0x146>
+      {
+        set_new_light_val(
+ 41a:	21 2f       	mov	r18, r17
+ 41c:	33 27       	eor	r19, r19
+ 41e:	b3 2f       	mov	r27, r19
+ 420:	a2 2f       	mov	r26, r18
+ 422:	ab 59       	subi	r26, 0x9B	; 155
+ 424:	bf 4f       	sbci	r27, 0xFF	; 255
+uint8_t 
+eeprom_read_byte (const uint8_t *addr) 
+{
+  uint8_t result;
+  __asm__ __volatile__
+ 426:	d5 d1       	rcall	.+938    	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 428:	60 2d       	mov	r22, r0
+ 42a:	2b 5a       	subi	r18, 0xAB	; 171
+ 42c:	3f 4f       	sbci	r19, 0xFF	; 255
+ 42e:	ce c0       	rjmp	.+412    	; 0x5cc <action+0x2e2>
+            my_eeprom_read_byte(&EE_Signal_bin_Pattern[myCommand]),
+            my_eeprom_read_byte(&EE_Signal_bin_Valid[myCommand])    );
+      }
+    else if (MyOpMode == 4)
+ 430:	84 30       	cpi	r24, 0x04	; 4
+ 432:	09 f0       	breq	.+2      	; 0x436 <action+0x14c>
+ 434:	5f c0       	rjmp	.+190    	; 0x4f4 <action+0x20a>
+      {                                            // Wechselblinker mit Stopmagnet
+         // Port 0, 1: Andreaskreuze -> Wechselblinken 
+         // Port 2: schnelles Blinkausgang (Lokführer)
+         // Port 3: Schalten des Stopmagneten
+         if (myCommand == 0) // = schalte alles ab
+ 436:	11 23       	and	r17, r17
+ 438:	51 f4       	brne	.+20     	; 0x44e <action+0x164>
+           {
+             #define BUE_AK_BL  ( 1000000L / PWM_PERIOD)   // Blinken Andreaskreuz
+             #define BUE_LF_BL  ( 1000000L / PWM_PERIOD)   // Blinken Lokführer
+         
+                  set_new_light_val(0x00, 0x07);          // turn all off
+ 43a:	67 e0       	ldi	r22, 0x07	; 7
+ 43c:	80 e0       	ldi	r24, 0x00	; 0
+ 43e:	f8 de       	rcall	.-528    	; 0x230 <set_new_light_val>
+ 440:	ab 9a       	sbi	0x15, 3	; 21
+                  set_target(3,1); // Magnet;
+                  out_pwm[3].rest    = 2* BUE_AK_BL;  // StopMagnet nach 2 Blinkphasen aus
+ 442:	8e e6       	ldi	r24, 0x6E	; 110
+ 444:	80 93 83 00 	sts	0x0083, r24
+                  out_pwm[3].offtime = 0;                   
+ 448:	10 92 85 00 	sts	0x0085, r1
+ 44c:	c5 c0       	rjmp	.+394    	; 0x5d8 <action+0x2ee>
+				  // Hinweis: braucht großes Delta - wird beim Einstellen des Modes gemacht!
+                  
+           }
+         else if (myCommand == 1) // = schalte beide ein, Phasenversatz
+ 44e:	11 30       	cpi	r17, 0x01	; 1
+ 450:	f1 f4       	brne	.+60     	; 0x48e <action+0x1a4>
+ 452:	ab 98       	cbi	0x15, 3	; 21
+           {
+                  set_target(3,0); // Magnet
+                  set_target(2,0); // gn;
+                  set_target(1,0); // ye;
+                  set_target(0,0); // rd;
+                  
+                  out_pwm[0].rest    = 2*BUE_AK_BL/2;
+ 454:	aa 98       	cbi	0x15, 2	; 21
+ 456:	a9 98       	cbi	0x15, 1	; 21
+ 458:	a8 98       	cbi	0x15, 0	; 21
+ 45a:	87 e3       	ldi	r24, 0x37	; 55
+ 45c:	80 93 6b 00 	sts	0x006B, r24
+                  out_pwm[0].offtime = BUE_AK_BL/2;
+ 460:	8b e1       	ldi	r24, 0x1B	; 27
+ 462:	80 93 6d 00 	sts	0x006D, r24
+                  out_pwm[0].ontime  = BUE_AK_BL/2;
+ 466:	80 93 6c 00 	sts	0x006C, r24
+                
+                  
+                  out_pwm[1].rest    = BUE_AK_BL/2;
+ 46a:	80 93 73 00 	sts	0x0073, r24
+                  out_pwm[1].offtime = BUE_AK_BL/2;
+ 46e:	80 93 75 00 	sts	0x0075, r24
+                  out_pwm[1].ontime  = BUE_AK_BL/2;
+ 472:	80 93 74 00 	sts	0x0074, r24
+                
+                  out_pwm[2].rest    = BUE_LF_BL/2;
+ 476:	80 93 7b 00 	sts	0x007B, r24
+                  out_pwm[2].offtime = BUE_LF_BL/2;
+ 47a:	80 93 7d 00 	sts	0x007D, r24
+                  out_pwm[2].ontime  = BUE_LF_BL/2;
+ 47e:	80 93 7c 00 	sts	0x007C, r24
+                
+                  out_pwm[3].rest    = 2* BUE_AK_BL;  // StopMagnet nach 2 Blinkphasen an
+ 482:	8e e6       	ldi	r24, 0x6E	; 110
+ 484:	80 93 83 00 	sts	0x0083, r24
+                  out_pwm[3].ontime = 0;                   
+ 488:	10 92 84 00 	sts	0x0084, r1
+ 48c:	a5 c0       	rjmp	.+330    	; 0x5d8 <action+0x2ee>
+				  // Hinweis: braucht großes Delta - wird beim Einstellen des Modes gemacht!
+           
+           }
+         else if (myCommand == 2) // unused
+ 48e:	12 30       	cpi	r17, 0x02	; 2
+ 490:	09 f4       	brne	.+2      	; 0x494 <action+0x1aa>
+ 492:	a2 c0       	rjmp	.+324    	; 0x5d8 <action+0x2ee>
+           {
+          }                     
+         else if (myCommand == 3) // unused
+ 494:	13 30       	cpi	r17, 0x03	; 3
+ 496:	09 f4       	brne	.+2      	; 0x49a <action+0x1b0>
+ 498:	9f c0       	rjmp	.+318    	; 0x5d8 <action+0x2ee>
+           {
+           }
+         else if (myCommand == 4) 
+ 49a:	14 30       	cpi	r17, 0x04	; 4
+ 49c:	51 f4       	brne	.+20     	; 0x4b2 <action+0x1c8>
+           {          
+           // = schalte alles ab (2. Gruppe)
+                  
+                  set_new_light_val(0x00, 0x70);
+ 49e:	60 e7       	ldi	r22, 0x70	; 112
+ 4a0:	80 e0       	ldi	r24, 0x00	; 0
+ 4a2:	c6 de       	rcall	.-628    	; 0x230 <set_new_light_val>
+ 4a4:	af 9a       	sbi	0x15, 7	; 21
+                  set_target(7,1); // Magnet
+                  out_pwm[7].rest    = 2* BUE_AK_BL;  // StopMagnet nach 2 Blinkphasen aus
+ 4a6:	8e e6       	ldi	r24, 0x6E	; 110
+ 4a8:	80 93 a3 00 	sts	0x00A3, r24
+                  out_pwm[7].offtime = 0;                   
+ 4ac:	10 92 a5 00 	sts	0x00A5, r1
+ 4b0:	93 c0       	rjmp	.+294    	; 0x5d8 <action+0x2ee>
+				  // Hinweis: braucht großes Delta - wird beim Einstellen des Modes gemacht!
+                  
+           }
+         else if (myCommand == 5) // = schalte beide ein, Phasenversatz
+ 4b2:	15 30       	cpi	r17, 0x05	; 5
+ 4b4:	09 f0       	breq	.+2      	; 0x4b8 <action+0x1ce>
+ 4b6:	90 c0       	rjmp	.+288    	; 0x5d8 <action+0x2ee>
+ 4b8:	af 98       	cbi	0x15, 7	; 21
+           {
+                  set_target(7,0); // Magnet
+                  set_target(6,0); // gn;
+                  set_target(5,0); // ye;
+                  set_target(4,0); // rd;
+                  
+                  out_pwm[4].rest    = 2*BUE_AK_BL/2;
+ 4ba:	ae 98       	cbi	0x15, 6	; 21
+ 4bc:	ad 98       	cbi	0x15, 5	; 21
+ 4be:	ac 98       	cbi	0x15, 4	; 21
+ 4c0:	87 e3       	ldi	r24, 0x37	; 55
+ 4c2:	80 93 8b 00 	sts	0x008B, r24
+                  out_pwm[4].offtime = BUE_AK_BL/2;
+ 4c6:	8b e1       	ldi	r24, 0x1B	; 27
+ 4c8:	80 93 8d 00 	sts	0x008D, r24
+                  out_pwm[4].ontime  = BUE_AK_BL/2;
+ 4cc:	80 93 8c 00 	sts	0x008C, r24
+                
+                  out_pwm[5].rest    = BUE_AK_BL/2;
+ 4d0:	80 93 93 00 	sts	0x0093, r24
+                  out_pwm[5].offtime = BUE_AK_BL/2;
+ 4d4:	80 93 95 00 	sts	0x0095, r24
+                  out_pwm[5].ontime  = BUE_AK_BL/2;
+ 4d8:	80 93 94 00 	sts	0x0094, r24
+                
+                  out_pwm[6].rest    = BUE_LF_BL/2;
+ 4dc:	80 93 9b 00 	sts	0x009B, r24
+                  out_pwm[6].offtime = BUE_LF_BL/2;
+ 4e0:	80 93 9d 00 	sts	0x009D, r24
+                  out_pwm[6].ontime  = BUE_LF_BL/2;
+ 4e4:	80 93 9c 00 	sts	0x009C, r24
+                
+                  out_pwm[7].rest    = 2* BUE_AK_BL;  // StopMagnet nach 2 Blinkphasen
+ 4e8:	8e e6       	ldi	r24, 0x6E	; 110
+ 4ea:	80 93 a3 00 	sts	0x00A3, r24
+                  out_pwm[7].ontime = 0;                   
+ 4ee:	10 92 a4 00 	sts	0x00A4, r1
+ 4f2:	72 c0       	rjmp	.+228    	; 0x5d8 <action+0x2ee>
+				  // Hinweis: braucht großes Delta - wird beim Einstellen des Modes gemacht!
+           }
+         else if (myCommand == 6) // unused
+           {
+                
+           }                     
+         else // (myCommand == 7) // unused
+           {
+                
+           }
+      }
+    else if (MyOpMode == 3)
+ 4f4:	83 30       	cpi	r24, 0x03	; 3
+ 4f6:	09 f0       	breq	.+2      	; 0x4fa <action+0x210>
+ 4f8:	3f c0       	rjmp	.+126    	; 0x578 <action+0x28e>
+      {   											// 3: Einfahrsignal + Vorsignal mit Dunkeltastung
+        if (myCommand <= 3)
+ 4fa:	14 30       	cpi	r17, 0x04	; 4
+ 4fc:	d8 f4       	brcc	.+54     	; 0x534 <action+0x24a>
+          {
+            if ((hauptsignal_state == 0)||(hauptsignal_state == 3)) 
+ 4fe:	80 91 61 00 	lds	r24, 0x0061
+ 502:	88 23       	and	r24, r24
+ 504:	11 f0       	breq	.+4      	; 0x50a <action+0x220>
+ 506:	83 30       	cpi	r24, 0x03	; 3
+ 508:	91 f4       	brne	.+36     	; 0x52e <action+0x244>
+              {
+                // VS war aus, wieder anmachen
+                set_new_light_val(
+ 50a:	a0 91 62 00 	lds	r26, 0x0062
+ 50e:	8a 2f       	mov	r24, r26
+ 510:	99 27       	eor	r25, r25
+ 512:	b9 2f       	mov	r27, r25
+ 514:	a8 2f       	mov	r26, r24
+ 516:	a3 5d       	subi	r26, 0xD3	; 211
+ 518:	bf 4f       	sbci	r27, 0xFF	; 255
+uint8_t 
+eeprom_read_byte (const uint8_t *addr) 
+{
+  uint8_t result;
+  __asm__ __volatile__
+ 51a:	5b d1       	rcall	.+694    	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 51c:	60 2d       	mov	r22, r0
+ 51e:	b9 2f       	mov	r27, r25
+ 520:	a8 2f       	mov	r26, r24
+ 522:	ab 5d       	subi	r26, 0xDB	; 219
+ 524:	bf 4f       	sbci	r27, 0xFF	; 255
+ 526:	55 d1       	rcall	.+682    	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 528:	80 2d       	mov	r24, r0
+ 52a:	77 27       	eor	r23, r23
+ 52c:	81 de       	rcall	.-766    	; 0x230 <set_new_light_val>
+                    my_eeprom_read_byte(&EE_Signal_DB4_Pattern[vorsignal_state]),
+                    my_eeprom_read_byte(&EE_Signal_DB4_Valid[vorsignal_state])    );  
+              }
+            hauptsignal_state = myCommand;
+ 52e:	10 93 61 00 	sts	0x0061, r17
+ 532:	04 c0       	rjmp	.+8      	; 0x53c <action+0x252>
+            set_new_light_val(
+                my_eeprom_read_byte(&EE_Signal_DB4_Pattern[hauptsignal_state]),
+                my_eeprom_read_byte(&EE_Signal_DB4_Valid[hauptsignal_state])    ); 
+          }
+        else if (myCommand <= 7)
+ 534:	18 30       	cpi	r17, 0x08	; 8
+ 536:	90 f4       	brcc	.+36     	; 0x55c <action+0x272>
+          {
+            vorsignal_state = myCommand;
+ 538:	10 93 62 00 	sts	0x0062, r17
+            set_new_light_val(
+ 53c:	21 2f       	mov	r18, r17
+ 53e:	33 27       	eor	r19, r19
+ 540:	b3 2f       	mov	r27, r19
+ 542:	a2 2f       	mov	r26, r18
+ 544:	a3 5d       	subi	r26, 0xD3	; 211
+ 546:	bf 4f       	sbci	r27, 0xFF	; 255
+uint8_t 
+eeprom_read_byte (const uint8_t *addr) 
+{
+  uint8_t result;
+  __asm__ __volatile__
+ 548:	44 d1       	rcall	.+648    	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 54a:	60 2d       	mov	r22, r0
+ 54c:	2b 5d       	subi	r18, 0xDB	; 219
+ 54e:	3f 4f       	sbci	r19, 0xFF	; 255
+ 550:	b3 2f       	mov	r27, r19
+ 552:	a2 2f       	mov	r26, r18
+ 554:	3e d1       	rcall	.+636    	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 556:	80 2d       	mov	r24, r0
+ 558:	77 27       	eor	r23, r23
+ 55a:	6a de       	rcall	.-812    	; 0x230 <set_new_light_val>
+                my_eeprom_read_byte(&EE_Signal_DB4_Pattern[vorsignal_state]),
+                my_eeprom_read_byte(&EE_Signal_DB4_Valid[vorsignal_state])    );
+          }
+
+        if ((hauptsignal_state == 0)||(hauptsignal_state == 3)) 
+ 55c:	80 91 61 00 	lds	r24, 0x0061
+ 560:	88 23       	and	r24, r24
+ 562:	19 f0       	breq	.+6      	; 0x56a <action+0x280>
+ 564:	83 30       	cpi	r24, 0x03	; 3
+ 566:	09 f0       	breq	.+2      	; 0x56a <action+0x280>
+ 568:	37 c0       	rjmp	.+110    	; 0x5d8 <action+0x2ee>
+uint8_t 
+eeprom_read_byte (const uint8_t *addr) 
+{
+  uint8_t result;
+  __asm__ __volatile__
+ 56a:	a4 e3       	ldi	r26, 0x34	; 52
+ 56c:	b0 e0       	ldi	r27, 0x00	; 0
+ 56e:	31 d1       	rcall	.+610    	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 570:	60 2d       	mov	r22, r0
+          {                                        // mit Dunkeltastung
+            // einfach drüber schreiben
+            set_new_light_val(
+                my_eeprom_read_byte(&EE_Signal_DB4_Pattern[7]),
+                my_eeprom_read_byte(&EE_Signal_DB4_Valid[7])    );
+          }
+      }
+    else if (MyOpMode == 2)         
+ 572:	ac e2       	ldi	r26, 0x2C	; 44
+ 574:	b0 e0       	ldi	r27, 0x00	; 0
+ 576:	2c c0       	rjmp	.+88     	; 0x5d0 <action+0x2e6>
+ 578:	82 30       	cpi	r24, 0x02	; 2
+ 57a:	69 f4       	brne	.+26     	; 0x596 <action+0x2ac>
+      {                             // Einfahrsignal + Vorsignal getrennt
+        if (myCommand < 8)
+ 57c:	18 30       	cpi	r17, 0x08	; 8
+ 57e:	60 f5       	brcc	.+88     	; 0x5d8 <action+0x2ee>
+          {
+            set_new_light_val(
+ 580:	21 2f       	mov	r18, r17
+ 582:	33 27       	eor	r19, r19
+ 584:	b3 2f       	mov	r27, r19
+ 586:	a2 2f       	mov	r26, r18
+ 588:	a3 5d       	subi	r26, 0xD3	; 211
+ 58a:	bf 4f       	sbci	r27, 0xFF	; 255
+uint8_t 
+eeprom_read_byte (const uint8_t *addr) 
+{
+  uint8_t result;
+  __asm__ __volatile__
+ 58c:	22 d1       	rcall	.+580    	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 58e:	60 2d       	mov	r22, r0
+ 590:	2b 5d       	subi	r18, 0xDB	; 219
+ 592:	3f 4f       	sbci	r19, 0xFF	; 255
+ 594:	1b c0       	rjmp	.+54     	; 0x5cc <action+0x2e2>
+                my_eeprom_read_byte(&EE_Signal_DB4_Pattern[myCommand]),
+                my_eeprom_read_byte(&EE_Signal_DB4_Valid[myCommand])    );
+          }
+      }
+    else if (MyOpMode == 1)        
+ 596:	81 30       	cpi	r24, 0x01	; 1
+ 598:	69 f4       	brne	.+26     	; 0x5b4 <action+0x2ca>
+      {                             // Zwei dreibegriffige Signale (DB)
+        if (myCommand < 8)
+ 59a:	18 30       	cpi	r17, 0x08	; 8
+ 59c:	e8 f4       	brcc	.+58     	; 0x5d8 <action+0x2ee>
+          {
+            set_new_light_val(
+ 59e:	21 2f       	mov	r18, r17
+ 5a0:	33 27       	eor	r19, r19
+ 5a2:	b3 2f       	mov	r27, r19
+ 5a4:	a2 2f       	mov	r26, r18
+ 5a6:	a3 5e       	subi	r26, 0xE3	; 227
+ 5a8:	bf 4f       	sbci	r27, 0xFF	; 255
+uint8_t 
+eeprom_read_byte (const uint8_t *addr) 
+{
+  uint8_t result;
+  __asm__ __volatile__
+ 5aa:	13 d1       	rcall	.+550    	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 5ac:	60 2d       	mov	r22, r0
+ 5ae:	2b 5e       	subi	r18, 0xEB	; 235
+ 5b0:	3f 4f       	sbci	r19, 0xFF	; 255
+ 5b2:	0c c0       	rjmp	.+24     	; 0x5cc <action+0x2e2>
+                my_eeprom_read_byte(&EE_Signal_DB3_Pattern[myCommand]),
+                my_eeprom_read_byte(&EE_Signal_DB3_Valid[myCommand])    );
+          }
+      }
+    else
+      {   // MyOpMode == 0          // Vier zweibegriffige Signale
+        if (myCommand < 8)
+ 5b4:	18 30       	cpi	r17, 0x08	; 8
+ 5b6:	80 f4       	brcc	.+32     	; 0x5d8 <action+0x2ee>
+          {
+            set_new_light_val(
+ 5b8:	21 2f       	mov	r18, r17
+ 5ba:	33 27       	eor	r19, r19
+ 5bc:	b3 2f       	mov	r27, r19
+ 5be:	a2 2f       	mov	r26, r18
+ 5c0:	a3 5f       	subi	r26, 0xF3	; 243
+ 5c2:	bf 4f       	sbci	r27, 0xFF	; 255
+uint8_t 
+eeprom_read_byte (const uint8_t *addr) 
+{
+  uint8_t result;
+  __asm__ __volatile__
+ 5c4:	06 d1       	rcall	.+524    	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 5c6:	60 2d       	mov	r22, r0
+ 5c8:	2b 5f       	subi	r18, 0xFB	; 251
+ 5ca:	3f 4f       	sbci	r19, 0xFF	; 255
+ 5cc:	b3 2f       	mov	r27, r19
+ 5ce:	a2 2f       	mov	r26, r18
+ 5d0:	00 d1       	rcall	.+512    	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 5d2:	80 2d       	mov	r24, r0
+ 5d4:	77 27       	eor	r23, r23
+ 5d6:	2c de       	rcall	.-936    	; 0x230 <set_new_light_val>
+                my_eeprom_read_byte(&EE_Signal_DB2_Pattern[myCommand]),
+                my_eeprom_read_byte(&EE_Signal_DB2_Valid[myCommand])    );
+          }
+      }  // OpMode
+    sei();
+ 5d8:	78 94       	sei
+ 5da:	1f 91       	pop	r17
+ 5dc:	08 95       	ret
+
+000005de <analyze_message>:
+  }
+
+
+#endif  // Belgian_signal
+//
+//-----------------------------------------------------------------------------
+// analyze_message checks the received DCC message
+// return 0 if void, 1 if accessory command, 2 if myAdr;
+//
+unsigned char analyze_message(void)
+  {
+ 5de:	90 e0       	ldi	r25, 0x00	; 0
+ 5e0:	20 e0       	ldi	r18, 0x00	; 0
+ 5e2:	30 e0       	ldi	r19, 0x00	; 0
+ 5e4:	05 c0       	rjmp	.+10     	; 0x5f0 <analyze_message+0x12>
+    unsigned char i;
+    unsigned char myxor = 0;
+    unsigned int MyAdr;
+    
+    for (i=0; i<message_size; i++)
+      {
+        myxor = myxor ^ message[i];
+ 5e6:	ff 27       	eor	r31, r31
+ 5e8:	ec 59       	subi	r30, 0x9C	; 156
+ 5ea:	ff 4f       	sbci	r31, 0xFF	; 255
+ 5ec:	80 81       	ld	r24, Z
+ 5ee:	98 27       	eor	r25, r24
+ 5f0:	e2 2f       	mov	r30, r18
+ 5f2:	80 91 ad 00 	lds	r24, 0x00AD
+ 5f6:	2f 5f       	subi	r18, 0xFF	; 255
+ 5f8:	3f 4f       	sbci	r19, 0xFF	; 255
+ 5fa:	e8 17       	cp	r30, r24
+ 5fc:	a0 f3       	brcs	.-24     	; 0x5e6 <analyze_message+0x8>
+      }
+
+    if (myxor)
+ 5fe:	99 23       	and	r25, r25
+ 600:	09 f0       	breq	.+2      	; 0x604 <analyze_message+0x26>
+ 602:	44 c0       	rjmp	.+136    	; 0x68c <analyze_message+0xae>
+      {
+        // checksum error, ignore
+        return(0);
+      }
+    else
+      {
+        // check, if it is an accessory message (128-192)
+        myxor = message[0] & 0b11000000;
+ 604:	80 91 64 00 	lds	r24, 0x0064
+        if (myxor == 0b10000000)
+ 608:	80 7c       	andi	r24, 0xC0	; 192
+ 60a:	80 38       	cpi	r24, 0x80	; 128
+ 60c:	09 f0       	breq	.+2      	; 0x610 <analyze_message+0x32>
+ 60e:	3e c0       	rjmp	.+124    	; 0x68c <analyze_message+0xae>
+          {
+            if (message[1] >= 0b10000000)  // MSB in Command byte set
+ 610:	80 91 65 00 	lds	r24, 0x0065
+ 614:	87 ff       	sbrs	r24, 7
+ 616:	3a c0       	rjmp	.+116    	; 0x68c <analyze_message+0xae>
+              {
+                if (message[1] & (1<<3))   // Bit 3: accessory command + active coil?
+ 618:	80 91 65 00 	lds	r24, 0x0065
+ 61c:	83 ff       	sbrs	r24, 3
+ 61e:	36 c0       	rjmp	.+108    	; 0x68c <analyze_message+0xae>
+                  {
+                    ReceivedCommand = message[1] & 0b00000111;
+ 620:	60 91 65 00 	lds	r22, 0x0065
+ 624:	67 70       	andi	r22, 0x07	; 7
+ 626:	60 93 63 00 	sts	0x0063, r22
+    
+                    // take bits 5 4 3 2 1 0 from message[0]
+                    // take Bits 6 5 4 from message[1] and invert
+    
+                    #define OPTCODE1
+                    #ifdef OPTCODE1
+                        unsigned char temp;
+                        myxor = ~message[1] & 0b01110000;
+ 62a:	80 91 65 00 	lds	r24, 0x0065
+ 62e:	80 95       	com	r24
+ 630:	80 77       	andi	r24, 0x70	; 112
+                        myxor = myxor<<1;  // shift as byte
+                        temp = message[0] & 0b00111111;
+ 632:	20 91 64 00 	lds	r18, 0x0064
+                        ReceivedAdr = (myxor<<1) | temp;
+ 636:	88 0f       	add	r24, r24
+ 638:	48 2f       	mov	r20, r24
+ 63a:	55 27       	eor	r21, r21
+ 63c:	44 0f       	add	r20, r20
+ 63e:	55 1f       	adc	r21, r21
+ 640:	2f 73       	andi	r18, 0x3F	; 63
+ 642:	33 27       	eor	r19, r19
+ 644:	42 2b       	or	r20, r18
+ 646:	53 2b       	or	r21, r19
+ 648:	50 93 ac 00 	sts	0x00AC, r21
+ 64c:	40 93 ab 00 	sts	0x00AB, r20
+uint8_t 
+eeprom_read_byte (const uint8_t *addr) 
+{
+  uint8_t result;
+  __asm__ __volatile__
+ 650:	a2 e0       	ldi	r26, 0x02	; 2
+ 652:	b0 e0       	ldi	r27, 0x00	; 0
+ 654:	be d0       	rcall	.+380    	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 656:	80 2d       	mov	r24, r0
+                    #else 
+                        ReceivedAdr = (message[0] & 0b00111111)
+                                    | ((~message[1] & 0b01110000) << 2);
+                    #endif
+    
+                    MyAdr = (my_eeprom_read_byte(&EE_myAdrH) << 8) |
+ 658:	a1 e0       	ldi	r26, 0x01	; 1
+ 65a:	b0 e0       	ldi	r27, 0x00	; 0
+ 65c:	ba d0       	rcall	.+372    	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 65e:	20 2d       	mov	r18, r0
+ 660:	99 27       	eor	r25, r25
+ 662:	98 2f       	mov	r25, r24
+ 664:	88 27       	eor	r24, r24
+ 666:	33 27       	eor	r19, r19
+ 668:	82 2b       	or	r24, r18
+ 66a:	93 2b       	or	r25, r19
+                            (my_eeprom_read_byte(&EE_myAdrL));
+    
+                    if (ReceivedAdr == MyAdr) return(2);
+ 66c:	48 17       	cp	r20, r24
+ 66e:	59 07       	cpc	r21, r25
+ 670:	51 f0       	breq	.+20     	; 0x686 <analyze_message+0xa8>
+                    else if (ReceivedAdr == (MyAdr+1))
+ 672:	01 96       	adiw	r24, 0x01	; 1
+ 674:	48 17       	cp	r20, r24
+ 676:	59 07       	cpc	r21, r25
+ 678:	19 f0       	breq	.+6      	; 0x680 <analyze_message+0xa2>
+ 67a:	81 e0       	ldi	r24, 0x01	; 1
+ 67c:	90 e0       	ldi	r25, 0x00	; 0
+ 67e:	08 95       	ret
+                      {
+                        ReceivedCommand += 8;
+ 680:	68 5f       	subi	r22, 0xF8	; 248
+ 682:	60 93 63 00 	sts	0x0063, r22
+ 686:	82 e0       	ldi	r24, 0x02	; 2
+ 688:	90 e0       	ldi	r25, 0x00	; 0
+ 68a:	08 95       	ret
+                        return(2);
+ 68c:	80 e0       	ldi	r24, 0x00	; 0
+ 68e:	90 e0       	ldi	r25, 0x00	; 0
+                      } 
+                    else return(1);
+                  }
+              }
+          }
+      }
+    return(0);
+  }
+ 690:	08 95       	ret
+
+00000692 <DoProgramming>:
+
+
+//------------------------------------------------------------------------
+// This Routine is called when PROG is pressed
+//
+#define DEBOUNCE  (50000L / PWM_PERIOD)
+#if (DEBOUNCE == 0)
+ #define DEBOUNCE  1
+#endif
+
+
+void DoProgramming(void)
+  {
+ 692:	f8 94       	cli
+    unsigned char myCommand;    
+
+    cli();
+    MyDelay = DEBOUNCE;
+ 694:	82 e0       	ldi	r24, 0x02	; 2
+ 696:	80 93 6a 00 	sts	0x006A, r24
+    sei();
+ 69a:	78 94       	sei
+
+    while(MyDelay) ;     // wait until ISR has decremented  MyDelay
+ 69c:	80 91 6a 00 	lds	r24, 0x006A
+ 6a0:	88 23       	and	r24, r24
+ 6a2:	e1 f7       	brne	.-8      	; 0x69c <DoProgramming+0xa>
+
+    if (PROG_PRESSED)                    // still pressed?
+ 6a4:	80 99       	sbic	0x10, 0	; 16
+ 6a6:	42 c0       	rjmp	.+132    	; 0x72c <DoProgramming+0x9a>
+      {
+        LED_ON;
+ 6a8:	96 9a       	sbi	0x12, 6	; 18
+        Communicate &= ~(1<<C_Received);
+ 6aa:	98 98       	cbi	0x13, 0	; 19
+        
+        while(PROG_PRESSED) ;           // wait for release
+ 6ac:	80 9b       	sbis	0x10, 0	; 16
+ 6ae:	fe cf       	rjmp	.-4      	; 0x6ac <DoProgramming+0x1a>
+
+        cli();
+ 6b0:	f8 94       	cli
+        MyDelay = DEBOUNCE;
+ 6b2:	82 e0       	ldi	r24, 0x02	; 2
+ 6b4:	80 93 6a 00 	sts	0x006A, r24
+        sei();
+ 6b8:	78 94       	sei
+
+        while(MyDelay) ;     // wait until ISR has decremented  MyDelay
+ 6ba:	80 91 6a 00 	lds	r24, 0x006A
+ 6be:	88 23       	and	r24, r24
+ 6c0:	39 f1       	breq	.+78     	; 0x710 <DoProgramming+0x7e>
+ 6c2:	fb cf       	rjmp	.-10     	; 0x6ba <DoProgramming+0x28>
+        
+
+        while(!PROG_PRESSED)
+          {
+            if (Communicate & (1<<C_Received))
+ 6c4:	98 9b       	sbis	0x13, 0	; 19
+ 6c6:	24 c0       	rjmp	.+72     	; 0x710 <DoProgramming+0x7e>
+              {                                     // Message
+                Communicate &= ~(1<<C_Received);
+ 6c8:	98 98       	cbi	0x13, 0	; 19
+                if (analyze_message())              // Accessory
+ 6ca:	89 df       	rcall	.-238    	; 0x5de <analyze_message>
+ 6cc:	88 23       	and	r24, r24
+ 6ce:	01 f1       	breq	.+64     	; 0x710 <DoProgramming+0x7e>
+                  {
+                    my_eeprom_write_byte(&EE_myAdrL, (unsigned char) ReceivedAdr);     
+ 6d0:	80 91 ab 00 	lds	r24, 0x00AB
+
+void 
+eeprom_write_byte (uint8_t *addr,uint8_t value)
+{
+  __asm__ __volatile__ (
+ 6d4:	a1 e0       	ldi	r26, 0x01	; 1
+ 6d6:	b0 e0       	ldi	r27, 0x00	; 0
+ 6d8:	08 2e       	mov	r0, r24
+ 6da:	83 d0       	rcall	.+262    	; 0x7e2 <__eeprom_write_byte_1C1D1E>
+                    my_eeprom_write_byte(&EE_myAdrH, (unsigned char) (ReceivedAdr >> 8));
+ 6dc:	80 91 ac 00 	lds	r24, 0x00AC
+
+void 
+eeprom_write_byte (uint8_t *addr,uint8_t value)
+{
+  __asm__ __volatile__ (
+ 6e0:	a2 e0       	ldi	r26, 0x02	; 2
+ 6e2:	b0 e0       	ldi	r27, 0x00	; 0
+ 6e4:	08 2e       	mov	r0, r24
+ 6e6:	7d d0       	rcall	.+250    	; 0x7e2 <__eeprom_write_byte_1C1D1E>
+                    
+                    myCommand = ReceivedCommand & 0x07;
+ 6e8:	80 91 63 00 	lds	r24, 0x0063
+ 6ec:	87 70       	andi	r24, 0x07	; 7
+
+void 
+eeprom_write_byte (uint8_t *addr,uint8_t value)
+{
+  __asm__ __volatile__ (
+ 6ee:	a3 e0       	ldi	r26, 0x03	; 3
+ 6f0:	b0 e0       	ldi	r27, 0x00	; 0
+ 6f2:	08 2e       	mov	r0, r24
+ 6f4:	76 d0       	rcall	.+236    	; 0x7e2 <__eeprom_write_byte_1C1D1E>
+                    my_eeprom_write_byte(&EE_myOpMode, myCommand);
+                    MyOpMode = myCommand;
+ 6f6:	80 93 60 00 	sts	0x0060, r24
+
+void 
+eeprom_write_byte (uint8_t *addr,uint8_t value)
+{
+  __asm__ __volatile__ (
+ 6fa:	80 e0       	ldi	r24, 0x00	; 0
+ 6fc:	a4 e0       	ldi	r26, 0x04	; 4
+ 6fe:	b0 e0       	ldi	r27, 0x00	; 0
+ 700:	08 2e       	mov	r0, r24
+ 702:	6f d0       	rcall	.+222    	; 0x7e2 <__eeprom_write_byte_1C1D1E>
+
+                    my_eeprom_write_byte(&EE_LastState, 0);
+                    
+                    do {} while (!eeprom_is_ready());    // wait for write to complete
+ 704:	e1 99       	sbic	0x1c, 1	; 28
+ 706:	fe cf       	rjmp	.-4      	; 0x704 <DoProgramming+0x72>
+                    
+                    LED_OFF;
+ 708:	96 98       	cbi	0x12, 6	; 18
+                    
+                    // we got reprogrammed ->
+                    // forget everthing running and restart decoder!                    
+                    
+                    // cli();
+                    
+                    // laut diversen Internetseiten sollte folgender Code laufen -
+                    // tuts aber nicht, wenn man das Assemblerlistung ansieht.
+                    // void (*funcptr)( void ) = 0x0000;    // Set up function pointer
+                    // funcptr();                        // Jump to Reset vector 0x0000
+                    
+                    __asm__ __volatile 
+ 70a:	e0 e0       	ldi	r30, 0x00	; 0
+ 70c:	f0 e0       	ldi	r31, 0x00	; 0
+ 70e:	09 95       	icall
+ 710:	80 99       	sbic	0x10, 0	; 16
+ 712:	d8 cf       	rjmp	.-80     	; 0x6c4 <DoProgramming+0x32>
+                    (
+                       "ldi r30,0"  "\n\t"
+                       "ldi r31,0"  "\n\t"
+                       "icall" "\n\t"
+                     );
+                    // return;  
+                  }
+              }
+          }  // while
+        LED_OFF;
+ 714:	96 98       	cbi	0x12, 6	; 18
+        cli();
+ 716:	f8 94       	cli
+        MyDelay = DEBOUNCE;
+ 718:	82 e0       	ldi	r24, 0x02	; 2
+ 71a:	80 93 6a 00 	sts	0x006A, r24
+        sei();
+ 71e:	78 94       	sei
+        while(MyDelay) ;     // wait until ISR has decremented  MyDelay
+ 720:	80 91 6a 00 	lds	r24, 0x006A
+ 724:	88 23       	and	r24, r24
+ 726:	e1 f7       	brne	.-8      	; 0x720 <DoProgramming+0x8e>
+        while(PROG_PRESSED) ;           // wait for release
+ 728:	80 9b       	sbis	0x10, 0	; 16
+ 72a:	fe cf       	rjmp	.-4      	; 0x728 <DoProgramming+0x96>
+ 72c:	08 95       	ret
+
+0000072e <main>:
+      }
+    return;   
+  }
+
+
+#if (PRBS_CODE == 1)
+// linear feedback shift register (prbs)
+//
+//      |---|    |---|    |---|    |---|    |---|    |---|    |---|    |---|
+//    ->| 0 |--->| 1 |-o->| 2 |-o->| 3 |-o->| 4 |--->| 5 |--->| 6 |--->| 7 |--o--->
+//   |  |---|    |---| |  |---| |  |---| |  |---|    |---|    |---|    |---|  |
+//   |                 |        |        |                                    |
+//    <--------------- + <----- + <----- + <----------------------------------
+//
+unsigned char prbs8(unsigned char seed)
+  {
+    unsigned char new_rnd;
+
+    new_rnd = seed;                // copy bit 1
+    new_rnd = new_rnd << 1;
+    new_rnd = new_rnd ^ seed;      // xor bit 2
+    new_rnd = new_rnd << 1;
+    new_rnd = new_rnd ^ seed;      // xor bit 3
+    new_rnd = new_rnd << 4;
+    new_rnd = new_rnd ^ seed;      // xor bit 7
+
+    // now put this bit to seed's lsb
+    new_rnd = new_rnd >> 7;
+    seed = seed << 1;
+    new_rnd = new_rnd + seed; 
+    
+    return(new_rnd);
+  }
+#endif
+
+
+int main(void)
+  {
+ 72e:	a7 dc       	rcall	.-1714   	; 0x7e <init_main>
+ 730:	84 e6       	ldi	r24, 0x64	; 100
+ 732:	35 e0       	ldi	r19, 0x05	; 5
+ 734:	21 ea       	ldi	r18, 0xA1	; 161
+ 736:	94 e0       	ldi	r25, 0x04	; 4
+ 738:	eb e6       	ldi	r30, 0x6B	; 107
+ 73a:	f0 e0       	ldi	r31, 0x00	; 0
+    unsigned char port;
+    init_main();
+     
+
+    
+    
+    // Delta für Glühlampensimulation vorbelegen
+
+    for (port=0; port<8; port++)
+          {
+            out_pwm[port].dimm_val    = DIMM_RANGE_MIN;
+ 73c:	83 83       	std	Z+3, r24	; 0x03
+            out_pwm[port].delta_A     = DIMM_UP_SPEED; 
+ 73e:	35 83       	std	Z+5, r19	; 0x05
+            out_pwm[port].light_A_val = DIMM_RANGE_MAX;                
+ 740:	24 83       	std	Z+4, r18	; 0x04
+			out_pwm[port].delta_B     = DIMM_DOWN_SPEED;
+ 742:	97 83       	std	Z+7, r25	; 0x07
+			out_pwm[port].light_B_val = DIMM_RANGE_MIN;
+ 744:	86 83       	std	Z+6, r24	; 0x06
+ 746:	38 96       	adiw	r30, 0x08	; 8
+ 748:	40 e0       	ldi	r20, 0x00	; 0
+ 74a:	eb 3a       	cpi	r30, 0xAB	; 171
+ 74c:	f4 07       	cpc	r31, r20
+ 74e:	b1 f7       	brne	.-20     	; 0x73c <main+0xe>
+uint8_t 
+eeprom_read_byte (const uint8_t *addr) 
+{
+  uint8_t result;
+  __asm__ __volatile__
+ 750:	a3 e0       	ldi	r26, 0x03	; 3
+ 752:	b0 e0       	ldi	r27, 0x00	; 0
+ 754:	3e d0       	rcall	.+124    	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 756:	80 2d       	mov	r24, r0
+                 
+          }
+
+   
+    MyOpMode  = my_eeprom_read_byte(&EE_myOpMode);
+ 758:	99 27       	eor	r25, r25
+ 75a:	80 93 60 00 	sts	0x0060, r24
+
+    if ((MyOpMode == 4) || (MyOpMode == 7))   // Bahnübergang oder Ampel
+ 75e:	84 30       	cpi	r24, 0x04	; 4
+ 760:	11 f0       	breq	.+4      	; 0x766 <main+0x38>
+ 762:	87 30       	cpi	r24, 0x07	; 7
+ 764:	49 f4       	brne	.+18     	; 0x778 <main+0x4a>
+	  {
+            out_pwm[3].delta_A = PWM_STEPS+2; // Stopmagnet soll durchschalten
+ 766:	8e e3       	ldi	r24, 0x3E	; 62
+ 768:	80 93 88 00 	sts	0x0088, r24
+            out_pwm[3].delta_B = PWM_STEPS+2; 
+ 76c:	80 93 8a 00 	sts	0x008A, r24
+ 	        out_pwm[7].delta_A = PWM_STEPS+2; // Stopmagnet soll durchschalten
+ 770:	80 93 a8 00 	sts	0x00A8, r24
+            out_pwm[7].delta_B = PWM_STEPS+2; 
+ 774:	80 93 aa 00 	sts	0x00AA, r24
+uint8_t 
+eeprom_read_byte (const uint8_t *addr) 
+{
+  uint8_t result;
+  __asm__ __volatile__
+ 778:	a4 e0       	ldi	r26, 0x04	; 4
+ 77a:	b0 e0       	ldi	r27, 0x00	; 0
+ 77c:	2a d0       	rcall	.+84     	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 77e:	80 2d       	mov	r24, r0
+ 	  } 
+
+    CurrentTarget = my_eeprom_read_byte(&EE_LastState);
+ 780:	99 27       	eor	r25, r25
+ 782:	85 bb       	out	0x15, r24	; 21
+    
+    Communicate = 0; 
+ 784:	13 ba       	out	0x13, r1	; 19
+    Recstate = 1<<RECSTAT_WF_PREAMBLE;  
+ 786:	81 e0       	ldi	r24, 0x01	; 1
+ 788:	84 bb       	out	0x14, r24	; 20
+
+    sei();              // Global enable interrupts
+ 78a:	78 94       	sei
+
+    while(1)
+      {
+        cli();
+ 78c:	f8 94       	cli
+        if (Communicate & (1<<C_Received)  )
+ 78e:	98 9b       	sbis	0x13, 0	; 19
+ 790:	06 c0       	rjmp	.+12     	; 0x79e <main+0x70>
+          {
+            sei();
+ 792:	78 94       	sei
+            if (analyze_message() == 2)     // MyAdr empfangen
+ 794:	24 df       	rcall	.-440    	; 0x5de <analyze_message>
+ 796:	82 30       	cpi	r24, 0x02	; 2
+ 798:	09 f4       	brne	.+2      	; 0x79c <main+0x6e>
+              {
+                action();
+ 79a:	a7 dd       	rcall	.-1202   	; 0x2ea <action>
+              }
+            Communicate &= ~(1<<C_Received); 
+ 79c:	98 98       	cbi	0x13, 0	; 19
+          }
+        sei();
+ 79e:	78 94       	sei
+        sei();
+ 7a0:	78 94       	sei
+
+        cli();
+ 7a2:	f8 94       	cli
+        if (Communicate & (1<<C_DoSave) )
+ 7a4:	99 9b       	sbis	0x13, 1	; 19
+ 7a6:	09 c0       	rjmp	.+18     	; 0x7ba <main+0x8c>
+          {
+            sei();
+ 7a8:	78 94       	sei
+            Communicate &= ~(1<<C_DoSave);
+ 7aa:	99 98       	cbi	0x13, 1	; 19
+            if (JUMPER_FITTED)
+ 7ac:	84 99       	sbic	0x10, 4	; 16
+ 7ae:	05 c0       	rjmp	.+10     	; 0x7ba <main+0x8c>
+              {
+                my_eeprom_write_byte(&EE_LastState, CurrentTarget);   
+ 7b0:	85 b3       	in	r24, 0x15	; 21
+
+void 
+eeprom_write_byte (uint8_t *addr,uint8_t value)
+{
+  __asm__ __volatile__ (
+ 7b2:	a4 e0       	ldi	r26, 0x04	; 4
+ 7b4:	b0 e0       	ldi	r27, 0x00	; 0
+ 7b6:	08 2e       	mov	r0, r24
+ 7b8:	14 d0       	rcall	.+40     	; 0x7e2 <__eeprom_write_byte_1C1D1E>
+              } 
+          } 
+        sei();
+ 7ba:	78 94       	sei
+        sei();
+ 7bc:	78 94       	sei
+        cli();
+ 7be:	f8 94       	cli
+        if (Communicate & (1<<C_Dimmstep) )
+ 7c0:	9a 9b       	sbis	0x13, 2	; 19
+ 7c2:	03 c0       	rjmp	.+6      	; 0x7ca <main+0x9c>
+          {
+            sei();
+ 7c4:	78 94       	sei
+            Communicate &= ~(1<<C_Dimmstep);
+ 7c6:	9a 98       	cbi	0x13, 2	; 19
+            dimmer();
+ 7c8:	59 dd       	rcall	.-1358   	; 0x27c <dimmer>
+          }
+
+        if (PROG_PRESSED) DoProgramming();         
+ 7ca:	80 99       	sbic	0x10, 0	; 16
+ 7cc:	df cf       	rjmp	.-66     	; 0x78c <main+0x5e>
+ 7ce:	61 df       	rcall	.-318    	; 0x692 <DoProgramming>
+ 7d0:	dd cf       	rjmp	.-70     	; 0x78c <main+0x5e>
+
+000007d2 <__eeprom_read_byte_1C1D1E>:
+ 7d2:	e1 99       	sbic	0x1c, 1	; 28
+ 7d4:	fe cf       	rjmp	.-4      	; 0x7d2 <__eeprom_read_byte_1C1D1E>
+ 7d6:	bf bb       	out	0x1f, r27	; 31
+ 7d8:	ae bb       	out	0x1e, r26	; 30
+ 7da:	e0 9a       	sbi	0x1c, 0	; 28
+ 7dc:	11 96       	adiw	r26, 0x01	; 1
+ 7de:	0d b2       	in	r0, 0x1d	; 29
+ 7e0:	08 95       	ret
+
+000007e2 <__eeprom_write_byte_1C1D1E>:
+ 7e2:	e1 99       	sbic	0x1c, 1	; 28
+ 7e4:	fe cf       	rjmp	.-4      	; 0x7e2 <__eeprom_write_byte_1C1D1E>
+ 7e6:	bf bb       	out	0x1f, r27	; 31
+ 7e8:	ae bb       	out	0x1e, r26	; 30
+ 7ea:	0d ba       	out	0x1d, r0	; 29
+ 7ec:	11 96       	adiw	r26, 0x01	; 1
+ 7ee:	0f b6       	in	r0, 0x3f	; 63
+ 7f0:	f8 94       	cli
+ 7f2:	e2 9a       	sbi	0x1c, 2	; 28
+ 7f4:	e1 9a       	sbi	0x1c, 1	; 28
+ 7f6:	0f be       	out	0x3f, r0	; 63
+ 7f8:	08 95       	ret
